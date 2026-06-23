@@ -146,6 +146,35 @@ p {
   color: white;
 }
 
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.language-toggle button {
+  min-width: 42px;
+  min-height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.language-toggle button.is-active {
+  background: white;
+  color: black;
+}
+
 .nav-cta,
 .button {
   display: inline-flex;
@@ -187,6 +216,29 @@ p {
   background: black;
   color: white;
   cursor: pointer;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}
+
+[dir="rtl"] .nav-links,
+[dir="rtl"] .scope-strip,
+[dir="rtl"] .hero-actions,
+[dir="rtl"] .local-badge,
+[dir="rtl"] .ai-window-top,
+[dir="rtl"] .report-kicker,
+[dir="rtl"] .question-stack-top {
+  direction: rtl;
+}
+
+[dir="rtl"] .ai-findings i {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .hero-content {
+  align-items: flex-end;
+  text-align: right;
 }
 
 .nav-cta:hover,
@@ -1564,16 +1616,27 @@ input:focus {
 
 @media (max-width: 640px) {
   .top-nav {
+    gap: 8px;
     padding: 16px 14px;
   }
 
   .brand-logo {
-    height: 86px;
+    height: 78px;
+  }
+
+  .language-toggle {
+    padding: 3px;
+  }
+
+  .language-toggle button {
+    min-width: 34px;
+    min-height: 32px;
+    font-size: 0.74rem;
   }
 
   .nav-cta {
     min-height: 40px;
-    padding: 0 15px;
+    padding: 0 12px;
     font-size: 0.86rem;
   }
 

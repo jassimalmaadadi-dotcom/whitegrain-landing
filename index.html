@@ -8,7 +8,7 @@
       content="WhiteGrain is an AI-powered Qatar construction review web app for quotes, BOQs, contracts, technical specs, dashboards, discrepancies, and document questions."
     />
     <title>WhiteGrain | Check Before You Sign</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260623-lang2" />
+    <link rel="stylesheet" href="whitegrain-version.css?v=20260627-app-home" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
@@ -28,13 +28,16 @@
             <a href="#checks">Checks</a>
             <a href="#report">Report</a>
             <a href="#comparison">Compare</a>
-            <a href="#notify">Notify me</a>
           </nav>
           <div class="language-toggle" aria-label="Language">
             <button type="button" class="is-active" data-lang="en" aria-pressed="true">EN</button>
             <button type="button" data-lang="ar" aria-pressed="false">AR</button>
           </div>
-          <a class="nav-cta" href="#notify">Notify me</a>
+          <div class="nav-auth-links" aria-label="Account links">
+            <a href="/app/#login">Sign in</a>
+            <a class="nav-cta" href="/app/#login">Sign up</a>
+            <a href="/app/#settings">My account</a>
+          </div>
         </header>
 
         <div class="hero-content">
@@ -52,13 +55,13 @@
           </p>
           <div class="scope-strip scroll-reveal delay-2" aria-label="WhiteGrain launch scope">
             <span><i data-lucide="brain-circuit"></i> Advanced AI analysis</span>
-            <span><i data-lucide="calculator"></i> Cost estimate</span>
+            <span class="is-disabled"><i data-lucide="calculator"></i> Cost estimate later</span>
             <span><i data-lucide="file-search"></i> BOQ and quote review</span>
             <span><i data-lucide="layout-dashboard"></i> Project dashboard</span>
             <span><i data-lucide="message-circle-question"></i> Ask your documents</span>
           </div>
           <div class="hero-actions scroll-reveal delay-2">
-            <a class="button light" href="#notify">Notify me when it launches</a>
+            <a class="button light" href="/app/#login">Create account</a>
             <a class="button outline" href="#how">See how it works</a>
           </div>
         </div>
@@ -252,11 +255,11 @@
         </div>
 
         <div class="scope-grid refined">
-          <article class="scope-card scroll-reveal">
+          <article class="scope-card is-disabled scroll-reveal" aria-disabled="true">
             <i data-lucide="calculator"></i>
             <span>Cost</span>
-            <h3>How much should this roughly cost?</h3>
-            <p>Compare the quote against a rough Qatar cost range and see which categories drive the budget.</p>
+            <h3>Cost calculator coming later.</h3>
+            <p>This section will be worked on after the file review, findings, to-dos, questions, and reports are stable.</p>
           </article>
           <article class="scope-card dark scroll-reveal delay-1">
             <i data-lucide="file-spreadsheet"></i>
@@ -445,35 +448,8 @@
         </div>
       </section>
 
-      <section class="notify-section" id="notify" aria-labelledby="notify-title">
-        <div class="notify-card scroll-reveal">
-          <div>
-            <p class="eyebrow">Launch list</p>
-            <h2 id="notify-title">Get notified when WhiteGrain launches.</h2>
-            <p>
-              Join the launch list and get the first Qatar construction quote checklist
-              when the first version is ready.
-            </p>
-          </div>
-          <form class="notify-form" id="launchForm">
-            <label>
-              Email or WhatsApp
-              <input
-                name="contact"
-                type="text"
-                autocomplete="email"
-                inputmode="email"
-                placeholder="you@example.com or +974..."
-                required
-              />
-            </label>
-            <button class="button dark" type="submit">Notify me at launch</button>
-            <p class="form-note" id="formNote">No documents needed. Just join the launch list.</p>
-          </form>
-        </div>
-      </section>
     </main>
 
-    <script src="whitegrain-version.js?v=20260623-lang2"></script>
+    <script src="whitegrain-version.js?v=20260627-app-home"></script>
   </body>
 </html>

@@ -146,6 +146,27 @@ p {
   color: white;
 }
 
+.nav-auth-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.9rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.nav-auth-links > a:not(.nav-cta) {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.nav-auth-links > a:not(.nav-cta):hover {
+  color: white;
+}
+
 .language-toggle {
   display: inline-flex;
   align-items: center;
@@ -335,6 +356,18 @@ h1 {
   height: 18px;
 }
 
+.scope-strip span.is-disabled,
+.scope-card.is-disabled {
+  opacity: 0.48;
+  filter: grayscale(0.55);
+  cursor: not-allowed;
+}
+
+.scope-card.is-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .lift-section {
   position: relative;
   z-index: 5;
@@ -385,7 +418,6 @@ h2 {
 .section-heading p,
 .workflow-copy p,
 .scope-card p,
-.notify-card p,
 .feature-card p,
 .scope-tile p,
 .quote-card p,
@@ -402,8 +434,7 @@ h2 {
 .scope-section,
 .report-section,
 .comparison-section,
-.audience-section,
-.notify-section {
+.audience-section {
   width: min(1240px, 100%);
   margin: 0 auto;
 }
@@ -465,8 +496,7 @@ h2 {
 .feature-card,
 .scope-tile,
 .review-panel,
-.scope-card,
-.notify-card {
+.scope-card {
   border-radius: var(--radius-lg);
   background: white;
   box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
@@ -1405,41 +1435,6 @@ h2 {
   color: var(--maroon);
 }
 
-.notify-section {
-  padding: 56px clamp(18px, 5vw, 64px) 80px;
-}
-
-.notify-card {
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 44px;
-  align-items: center;
-  padding: clamp(28px, 5vw, 54px);
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(34, 34, 34, 0.92)),
-    black;
-  color: white;
-}
-
-.notify-card .eyebrow,
-.notify-card h2 {
-  color: white;
-}
-
-.notify-card p {
-  max-width: 720px;
-  color: rgba(255, 255, 255, 0.74);
-}
-
-.notify-form {
-  display: grid;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 24px;
-  background: white;
-  color: black;
-}
-
 label {
   display: grid;
   gap: 8px;
@@ -1574,8 +1569,7 @@ input:focus {
   .ai-layout,
   .compare-board,
   .deliverables-grid,
-  .report-layout,
-  .notify-card {
+  .report-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1638,6 +1632,15 @@ input:focus {
     min-height: 40px;
     padding: 0 12px;
     font-size: 0.86rem;
+  }
+
+  .nav-auth-links {
+    gap: 4px;
+    font-size: 0.78rem;
+  }
+
+  .nav-auth-links > a:not(.nav-cta) {
+    display: none;
   }
 
   .hero-content {
@@ -1713,8 +1716,7 @@ input:focus {
   .scope-section,
   .report-section,
   .comparison-section,
-  .audience-section,
-  .notify-section {
+  .audience-section {
     padding-right: 16px;
     padding-left: 16px;
   }
@@ -1723,8 +1725,7 @@ input:focus {
   .feature-card,
   .quote-card,
   .question-card,
-  .scope-card,
-  .notify-card {
+  .scope-card {
     border-radius: 24px;
   }
 

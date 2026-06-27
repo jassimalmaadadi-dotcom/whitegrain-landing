@@ -1,11 +1,6 @@
-const launchForm = document.querySelector("#launchForm");
-const formNote = document.querySelector("#formNote");
 const revealItems = document.querySelectorAll(".scroll-reveal");
 const languageButtons = document.querySelectorAll("[data-lang]");
 let currentLanguage = localStorage.getItem("whiteGrainLanguage") || "en";
-
-// Paste the Google Apps Script web app URL here after deployment.
-const GOOGLE_SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzI5kwIfam6Kq1UxHPDKhS2RayLdY_0T7PL0mEz-IWSW4yI9az_RFYuyZncyJxEmOg7wQ/exec";
 
 const arabicCopy = {
   "Problem": "المشكلة",
@@ -241,9 +236,6 @@ function setLanguage(language) {
   document.documentElement.dir = nextLanguage === "ar" ? "rtl" : "ltr";
   document.body.dataset.lang = nextLanguage;
 
-  const contactInput = launchForm?.querySelector("input[name='contact']");
-  if (contactInput) contactInput.placeholder = placeholderCopy[nextLanguage];
-
   languageButtons.forEach((button) => {
     const isActive = button.dataset.lang === nextLanguage;
     button.classList.toggle("is-active", isActive);
@@ -260,55 +252,4 @@ function setLanguage(language) {
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
-});
-
-function saveLocalLead(payload) {
-  const leads = JSON.parse(localStorage.getItem("whiteGrainLaunchLeads") || "[]");
-  leads.push(payload);
-  localStorage.setItem("whiteGrainLaunchLeads", JSON.stringify(leads));
-}
-
-launchForm?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  const data = Object.fromEntries(new FormData(launchForm).entries());
-  const submitButton = launchForm.querySelector("button[type='submit']");
-  const payload = {
-    ...data,
-    source: "whitegrain-launch-page",
-    page: window.location.href,
-    userAgent: navigator.userAgent,
-    submittedAt: new Date().toISOString(),
-  };
-
-  saveLocalLead(payload);
-
-  submitButton.disabled = true;
-  submitButton.textContent = formMessages.saving[currentLanguage];
-
-  try {
-    if (GOOGLE_SHEETS_WEB_APP_URL) {
-      await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams(payload),
-      });
-    }
-
-    launchForm.reset();
-    formNote.textContent = GOOGLE_SHEETS_WEB_APP_URL
-      ? formMessages.success[currentLanguage]
-      : formMessages.local[currentLanguage];
-    formNote.classList.add("success");
-  } catch {
-    formNote.textContent = formMessages.error[currentLanguage];
-    formNote.classList.remove("success");
-    formNote.classList.add("error");
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = formMessages.submit[currentLanguage];
-  }
 });

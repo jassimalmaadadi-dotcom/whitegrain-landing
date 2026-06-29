@@ -85,6 +85,7 @@ let currentLanguage = localStorage.getItem("whitegrainLandingLanguage") || "en";
 
 const languageLabel = document.querySelector("#languageLabel");
 const languageToggle = document.querySelector(".language-toggle");
+const brandLink = document.querySelector(".brand");
 const menuButton = document.querySelector(".menu-button");
 const navLinks = document.querySelector(".nav-links");
 const form = document.querySelector("#redFlagForm");
@@ -124,6 +125,13 @@ function closeMenu() {
   menuButton.setAttribute("aria-expanded", "false");
 }
 
+function toggleMenu() {
+  const nextState = !navLinks.classList.contains("is-open");
+  navLinks.classList.toggle("is-open", nextState);
+  document.body.classList.toggle("menu-open", nextState);
+  menuButton.setAttribute("aria-expanded", String(nextState));
+}
+
 function setFlowStep(step) {
   guidedSteps.forEach((item) => {
     item.classList.toggle("is-active", item.dataset.flowStep === String(step));
@@ -161,10 +169,14 @@ languageToggle.addEventListener("click", () => {
 });
 
 menuButton.addEventListener("click", () => {
-  const nextState = !navLinks.classList.contains("is-open");
-  navLinks.classList.toggle("is-open", nextState);
-  document.body.classList.toggle("menu-open", nextState);
-  menuButton.setAttribute("aria-expanded", String(nextState));
+  toggleMenu();
+});
+
+brandLink.addEventListener("click", (event) => {
+  if (window.matchMedia("(max-width: 720px)").matches) {
+    event.preventDefault();
+    toggleMenu();
+  }
 });
 
 navLinks.querySelectorAll("a").forEach((link) => {

@@ -179,9 +179,8 @@ fileInput.addEventListener("change", () => {
   const file = fileInput.files?.[0];
   if (!file) {
     fileName.textContent = "No file selected";
-    contactFields.hidden = true;
     analysisStatus.hidden = true;
-    submitButtonLabel.textContent = "Continue";
+    submitButtonLabel.textContent = "Get 3 Free Red Flags";
     setFlowStep(1);
     return;
   }
@@ -203,12 +202,6 @@ form.addEventListener("submit", (event) => {
   if (!file || !file.name) {
     showFormMessage("error", "formMissingFile");
     setFlowStep(1);
-    return;
-  }
-
-  if (contactFields.hidden) {
-    revealContactStep();
-    showFormMessage("", "formReady");
     return;
   }
 

@@ -1362,22 +1362,47 @@ textarea {
 @media (max-width: 720px) {
   .guided-hero {
     width: min(100% - 22px, 1180px);
-    margin-top: 18px;
+    margin-top: 10px;
   }
 
   .hero-intro {
     text-align: start;
+    margin-bottom: 12px;
+  }
+
+  .hero-intro .eyebrow {
+    margin-bottom: 4px;
+    font-size: 0.66rem;
   }
 
   .hero-intro h1 {
-    font-size: clamp(3rem, 17vw, 4.8rem);
+    font-size: clamp(2.7rem, 14vw, 4.05rem);
+    line-height: 0.88;
   }
 
   .hero-intro h2 {
-    font-size: clamp(1.3rem, 6.5vw, 1.85rem);
+    margin-top: 8px;
+    font-size: clamp(1.08rem, 5.4vw, 1.48rem);
+    line-height: 1.08;
+  }
+
+  .hero-intro p:not(.eyebrow) {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .guided-flow {
+    display: flex;
+    flex-direction: column;
   }
 
   .guided-steps {
+    order: 2;
     grid-template-columns: 1fr;
     gap: 10px;
     border-radius: 24px;
@@ -1390,15 +1415,105 @@ textarea {
   }
 
   .guided-panel {
+    order: 1;
     border-radius: 24px;
-    padding: 16px;
+    padding: 10px;
+    gap: 10px;
   }
 
-  .panel-head h2 {
-    font-size: 2.15rem;
+  .panel-head,
+  .panel-explainer {
+    display: none;
   }
 
   .file-drop {
-    min-height: 190px;
+    min-height: 82px;
+    grid-template-columns: auto 1fr;
+    place-items: center start;
+    gap: 4px 12px !important;
+    border-radius: 18px;
+    padding: 12px;
+    text-align: start;
+  }
+
+  .file-drop-icon {
+    grid-row: span 3;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .file-drop-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .file-drop strong {
+    font-size: 1.22rem;
+  }
+
+  .file-drop small {
+    font-size: 0.78rem;
+    line-height: 1.2;
+  }
+
+  .file-name {
+    justify-self: start;
+    max-width: 210px;
+    padding: 5px 9px;
+    font-size: 0.76rem;
+  }
+
+  .guided-form {
+    gap: 8px;
+  }
+
+  .red-flag-form label {
+    gap: 4px;
+    font-size: 0.82rem;
+  }
+
+  .red-flag-form input,
+  .red-flag-form select,
+  .red-flag-form textarea {
+    min-height: 42px;
+    border-radius: 13px;
+    padding: 9px 11px;
+  }
+
+  .contact-fields {
+    gap: 8px;
+  }
+
+  .worry-field {
+    display: none;
+  }
+
+  .consent-row {
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .form-submit {
+    min-height: 48px;
+    margin-top: 0;
+  }
+
+  .form-note {
+    min-height: auto;
+    border-radius: 13px;
+    padding: 9px 10px;
+    font-size: 0.78rem;
+  }
+
+  .analysis-status {
+    padding: 9px;
+    border-radius: 14px;
+  }
+
+  .analysis-status p {
+    margin-top: 7px;
+    font-size: 0.78rem;
+    line-height: 1.25;
   }
 }

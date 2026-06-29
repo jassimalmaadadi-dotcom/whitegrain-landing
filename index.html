@@ -116,24 +116,24 @@
                 <p>Review started. Add WhatsApp while WhiteGrain prepares the red-flag report.</p>
               </div>
 
-              <div class="contact-fields" id="contactFields" hidden>
+              <div class="contact-fields" id="contactFields">
                 <label>
                   <span data-i18n="nameLabel">Name</span>
-                  <input type="text" name="name" autocomplete="name" />
+                  <input type="text" name="name" autocomplete="name" required />
                 </label>
 
                 <label>
                   <span data-i18n="whatsappLabel">WhatsApp number</span>
-                  <input type="tel" name="whatsapp" autocomplete="tel" placeholder="+974" />
+                  <input type="tel" name="whatsapp" autocomplete="tel" placeholder="+974" required />
                 </label>
 
-                <label>
+                <label class="worry-field">
                   <span data-i18n="worryLabel">What are you worried about? <em data-i18n="optional">(optional)</em></span>
                   <textarea name="note" rows="3"></textarea>
                 </label>
 
                 <label class="consent-row">
-                  <input type="checkbox" name="consent" />
+                  <input type="checkbox" name="consent" required />
                   <span data-i18n="consentText">
                     I agree that WhiteGrain can use this document only to prepare my review and contact me on WhatsApp.
                   </span>
@@ -142,11 +142,11 @@
 
               <button class="button button-primary form-submit" type="submit">
                 <i data-lucide="shield-check"></i>
-                <span>Continue</span>
+                <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
               </button>
 
               <p class="form-note" id="formNote">
-                Upload the document first. The WhatsApp details appear next.
+                Upload a file, add your WhatsApp, then send it for review.
               </p>
             </form>
 

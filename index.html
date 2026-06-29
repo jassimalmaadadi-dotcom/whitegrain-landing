@@ -1,454 +1,303 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="WhiteGrain is an AI-powered Qatar construction review web app for quotes, BOQs, contracts, technical specs, dashboards, discrepancies, and document questions."
+      content="WhiteGrain reviews contractor quotes, BOQs, construction contracts, repair documents, and maintenance agreements for red flags before you sign or pay."
     />
-    <title>WhiteGrain | Check Before You Sign</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260628-qa-overflow" />
+    <title>WhiteGrain | Professional Red-Flag Review</title>
+    <link rel="stylesheet" href="whitegrain-version.css?v=20260629-redflag-flow" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
-    <main id="top">
-      <section class="hero-shell" aria-labelledby="hero-title">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="hero-overlay" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="WhiteGrain home">
+        <img src="assets/whitegrain-oneword-logo.png" alt="WhiteGrain" />
+      </a>
 
-        <header class="top-nav scroll-reveal">
-          <a class="brand" href="#top" aria-label="WhiteGrain home">
-            <img class="brand-logo" src="assets/whitegrain-oneword-logo.png" alt="WhiteGrain" />
-          </a>
-          <nav class="nav-links" aria-label="Page navigation">
-            <a href="#problem">Problem</a>
-            <a href="#how">How it works</a>
-            <a href="#ai">AI analysis</a>
-            <a href="#checks">Checks</a>
-            <a href="#report">Report</a>
-            <a href="#comparison">Compare</a>
-          </nav>
-          <div class="language-toggle" aria-label="Language">
-            <button type="button" class="is-active" data-lang="en" aria-pressed="true">EN</button>
-            <button type="button" data-lang="ar" aria-pressed="false">AR</button>
-          </div>
-          <div class="nav-auth-links" aria-label="Account links">
-            <a class="nav-cta" href="/app/#login">Sign up / Sign in</a>
-            <a href="/app/#settings">My account</a>
-          </div>
-        </header>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu"></i>
+      </button>
 
-        <div class="hero-content">
-          <div class="local-badge scroll-reveal">
-            <img class="flag-chip" src="assets/qatar-flag.svg" alt="Qatar flag" />
-            <span>Launching for people building and renovating in Qatar</span>
-          </div>
-          <h1 id="hero-title" class="scroll-reveal">Advanced AI for checking construction quotes before you sign.</h1>
-          <p class="hero-lede scroll-reveal delay-1">
-            WhiteGrain will use advanced artificial intelligence to read your
-            contractor quote, BOQ, contract, technical specs, drawings, and
-            material list. It turns them into a clear dashboard with cost
-            context, missing details, discrepancies, risks, recommendations,
-            and answers to your questions.
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#how" data-i18n="navHow">How it works</a>
+        <a href="#review" data-i18n="navReview">What we review</a>
+        <a href="#red-flags" data-i18n="navFlags">Sample red flags</a>
+        <a href="#sample-report" data-i18n="navReport">Sample report</a>
+        <a href="#trust" data-i18n="navPrivacy">Privacy</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="language-toggle" type="button" aria-label="Switch language">
+          <i data-lucide="globe-2"></i>
+          <span id="languageLabel">EN</span>
+        </button>
+        <a class="login-link" href="/app" data-i18n="login">Login</a>
+        <a class="primary-link" href="#upload" data-i18n="primaryCta">Get 3 Free Red Flags</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="heroEyebrow">Professional Red-Flag Review</p>
+          <h1 data-i18n="heroTitle">Wait! Before You Sign</h1>
+          <h2 data-i18n="heroSubheadline">Review your contractor &amp; maintenance documents first.</h2>
+          <p class="hero-text" data-i18n="heroText">
+            Upload your quote, BOQ, or repair/maintenance contract. WhiteGrain checks for scope gaps,
+            vague specifications, compliance issues, payment risks, logic problems, and cost red flags.
           </p>
-          <div class="scope-strip scroll-reveal delay-2" aria-label="WhiteGrain launch scope">
-            <span><i data-lucide="brain-circuit"></i> Advanced AI analysis</span>
-            <span class="is-disabled"><i data-lucide="calculator"></i> Cost estimate later</span>
-            <span><i data-lucide="file-search"></i> BOQ and quote review</span>
-            <span><i data-lucide="layout-dashboard"></i> Project dashboard</span>
-            <span><i data-lucide="message-circle-question"></i> Ask your documents</span>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#upload">
+              <i data-lucide="upload-cloud"></i>
+              <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
+            </a>
+            <a class="button button-secondary" href="#sample-report">
+              <i data-lucide="file-search"></i>
+              <span data-i18n="secondaryCta">See Sample Report</span>
+            </a>
           </div>
-          <div class="hero-actions scroll-reveal delay-2">
-            <a class="button light" href="/app/#login">Sign up / Sign in</a>
-            <a class="button outline" href="#how">See how it works</a>
+
+          <div class="flow-strip" aria-label="Upload document to WhatsApp report">
+            <span><i data-lucide="file-up"></i><b data-i18n="flowUpload">Upload document</b></span>
+            <i data-lucide="arrow-right"></i>
+            <span><i data-lucide="shield-alert"></i><b data-i18n="flowReview">Red-flag review</b></span>
+            <i data-lucide="arrow-right"></i>
+            <span><i data-lucide="message-circle"></i><b data-i18n="flowWhatsapp">WhatsApp report</b></span>
           </div>
+        </div>
+
+        <aside class="upload-card" id="upload" aria-labelledby="uploadTitle">
+          <div class="upload-card-header">
+            <span class="icon-badge"><i data-lucide="file-warning"></i></span>
+            <div>
+              <p class="eyebrow" data-i18n="uploadEyebrow">No account required</p>
+              <h2 id="uploadTitle" data-i18n="uploadTitle">Upload for review</h2>
+            </div>
+          </div>
+
+          <form class="red-flag-form" id="redFlagForm">
+            <label>
+              <span data-i18n="nameLabel">Name</span>
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+
+            <label>
+              <span data-i18n="whatsappLabel">WhatsApp number</span>
+              <input type="tel" name="whatsapp" autocomplete="tel" placeholder="+974" required />
+            </label>
+
+            <label>
+              <span data-i18n="projectTypeLabel">Project type</span>
+              <select name="projectType" required>
+                <option value="" data-i18n="selectProject">Select project type</option>
+                <option value="villa-construction" data-i18n="projectVilla">Villa construction</option>
+                <option value="villa-renovation" data-i18n="projectRenovation">Villa renovation</option>
+                <option value="maintenance-repair" data-i18n="projectMaintenance">Maintenance / repair work</option>
+                <option value="fit-out" data-i18n="projectFitout">Fit-out</option>
+                <option value="other" data-i18n="projectOther">Other</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="documentLabel">Document upload</span>
+              <input
+                type="file"
+                name="document"
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
+                required
+              />
+              <small data-i18n="fileTypes">PDF, Word, Excel, JPG, PNG, WebP, text, or CSV.</small>
+            </label>
+
+            <label>
+              <span data-i18n="worryLabel">What are you worried about? <em data-i18n="optional">(optional)</em></span>
+              <textarea name="note" rows="3"></textarea>
+            </label>
+
+            <label class="consent-row">
+              <input type="checkbox" name="consent" required />
+              <span data-i18n="consentText">
+                I agree that WhiteGrain can use this document only to prepare my review and contact me on WhatsApp.
+              </span>
+            </label>
+
+            <button class="button button-primary form-submit" type="submit">
+              <i data-lucide="shield-check"></i>
+              <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
+            </button>
+
+            <p class="form-note" id="formNote" data-i18n="formNote">
+              First review starts from 3 red flags. Full review options can be discussed on WhatsApp.
+            </p>
+          </form>
+        </aside>
+      </section>
+
+      <section class="document-visual" aria-label="Document types WhiteGrain reviews">
+        <div class="doc-card quote">
+          <p>CONTRACTOR QUOTE</p>
+          <strong>External works</strong>
+          <span>Provisional sum - not detailed</span>
+        </div>
+        <div class="doc-card blueprint">
+          <p>VILLA BLUEPRINT</p>
+          <strong>AC + lighting coordination</strong>
+          <span>Confirm before approval</span>
+        </div>
+        <div class="doc-card boq">
+          <p>BOQ SUMMARY</p>
+          <strong>Tiles 60x60</strong>
+          <span>No allowance or origin listed</span>
+        </div>
+        <div class="doc-card maintenance">
+          <p>MAINTENANCE CONTRACT</p>
+          <strong>Emergency call-out</strong>
+          <span>Response time not defined</span>
         </div>
       </section>
 
-      <section class="lift-section" id="problem" aria-labelledby="problem-title">
-        <div class="dot-motif" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span>
+      <section class="section" id="how">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="howEyebrow">Simple process</p>
+          <h2 data-i18n="howTitle">How WhiteGrain Works</h2>
         </div>
+        <div class="steps-grid">
+          <article>
+            <span class="step-number">01</span>
+            <i data-lucide="upload-cloud"></i>
+            <h3 data-i18n="step1Title">Upload</h3>
+            <p data-i18n="step1Text">Upload your quote, BOQ, contract, or repair/maintenance document.</p>
+          </article>
+          <article>
+            <span class="step-number">02</span>
+            <i data-lucide="scan-search"></i>
+            <h3 data-i18n="step2Title">Red-Flag Review</h3>
+            <p data-i18n="step2Text">
+              WhiteGrain reviews the document for missing details, unclear scope, weak specifications,
+              compliance concerns, payment risks, and cost reasonableness.
+            </p>
+          </article>
+          <article>
+            <span class="step-number">03</span>
+            <i data-lucide="message-square-text"></i>
+            <h3 data-i18n="step3Title">WhatsApp Report</h3>
+            <p data-i18n="step3Text">
+              Receive a simple report with red flags, recommendations, and questions to ask before signing.
+            </p>
+          </article>
+        </div>
+      </section>
 
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow scroll-reveal">The problem</p>
-            <h2 id="problem-title" class="scroll-reveal delay-1">Most construction surprises are hidden in vague quotes.</h2>
-          </div>
-          <p class="scroll-reveal delay-2">
-            A contractor quote can look complete while still missing the details that
-            decide the real cost, quality, and payment risk.
+      <section class="section review-section" id="review">
+        <div class="section-heading compact">
+          <p class="eyebrow" data-i18n="reviewEyebrow">Specialized document review</p>
+          <h2 data-i18n="reviewTitle">What WhiteGrain Reviews</h2>
+          <p data-i18n="reviewText">
+            Built for Qatar homeowners reviewing construction, repair, fit-out, and maintenance documents.
           </p>
         </div>
 
-        <div class="problem-band strong-problems scroll-reveal delay-2" aria-label="Common construction quote problems">
+        <div class="review-grid">
+          <article><i data-lucide="list-checks"></i><h3 data-i18n="scopeGaps">Scope gaps</h3></article>
+          <article><i data-lucide="ruler"></i><h3 data-i18n="specifications">Specifications</h3></article>
+          <article><i data-lucide="badge-check"></i><h3 data-i18n="compliance">Compliance</h3></article>
+          <article><i data-lucide="git-compare-arrows"></i><h3 data-i18n="logicCheck">Logic check</h3></article>
+          <article><i data-lucide="wallet-cards"></i><h3 data-i18n="paymentRisk">Payment risk</h3></article>
+          <article><i data-lucide="calculator"></i><h3 data-i18n="costReasonableness">Cost reasonableness</h3></article>
+        </div>
+      </section>
+
+      <section class="section split-section" id="red-flags">
+        <div class="section-heading sticky-copy">
+          <p class="eyebrow" data-i18n="flagsEyebrow">Before you sign</p>
+          <h2 data-i18n="flagsTitle">Sample Red Flags</h2>
+          <p data-i18n="flagsText">
+            The review highlights practical issues that can become cost, quality, or payment problems later.
+          </p>
+          <a class="button button-primary" href="#upload">
+            <i data-lucide="upload-cloud"></i>
+            <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
+          </a>
+        </div>
+
+        <div class="red-flag-list">
           <article>
-            <i data-lucide="triangle-alert"></i>
-            <strong>"Tiles included"</strong>
-            <span>No brand, size, allowance, supplier, installation rule, or credit if you choose cheaper tiles.</span>
+            <i data-lucide="layers"></i>
+            <p data-i18n="flagTiles">“Tiles included” but no brand, size, origin, or allowance.</p>
           </article>
           <article>
             <i data-lucide="wind"></i>
-            <strong>"AC lump sum"</strong>
-            <span>No brand, tonnage, duct insulation, testing, commissioning, or upgrade rule.</span>
+            <p data-i18n="flagAc">AC listed as lump sum without brand, tonnage, insulation, testing, or commissioning.</p>
           </article>
           <article>
             <i data-lucide="droplets"></i>
-            <strong>"Waterproofing included"</strong>
-            <span>No system, membrane type, installation method, warranty, or inspection requirement.</span>
+            <p data-i18n="flagWaterproof">Waterproofing mentioned without system type, warranty, or test method.</p>
           </article>
           <article>
-            <i data-lucide="wallet-cards"></i>
-            <strong>"Payment stage"</strong>
-            <span>Payment is requested, but the quote does not say what work must be completed first.</span>
+            <i data-lucide="calendar-check"></i>
+            <p data-i18n="flagPayment">Payment milestones not tied to measurable completed work.</p>
+          </article>
+          <article>
+            <i data-lucide="file-x-2"></i>
+            <p data-i18n="flagExclusions">Exclusions that may become variation claims.</p>
           </article>
         </div>
       </section>
 
-      <section class="workflow-section" id="how" aria-labelledby="how-title">
-        <div class="workflow-copy">
-          <p class="eyebrow scroll-reveal">How it works</p>
-          <h2 id="how-title" class="scroll-reveal delay-1">Upload any project files you already have. WhiteGrain analyzes them and gives you a dashboard, answers, and recommendations.</h2>
-          <p class="scroll-reveal delay-2">
-            Start with project details, a quote, BOQ, contract, specs, drawings,
-            material list, or payment schedule. WhiteGrain reviews them together,
-            flags gaps and discrepancies, and shows clear next steps before you
-            sign or pay.
-          </p>
+      <section class="section sample-report" id="sample-report">
+        <div class="report-preview">
+          <div class="report-toolbar">
+            <span data-i18n="sampleReportLabel">Sample report preview</span>
+            <button type="button" class="small-button" id="sampleReportButton">
+              <i data-lucide="eye"></i>
+              <span data-i18n="secondaryCta">See Sample Report</span>
+            </button>
+          </div>
+          <div class="report-body">
+            <div class="report-score">
+              <strong>3</strong>
+              <span data-i18n="freeFlags">free red flags</span>
+            </div>
+            <div class="report-items">
+              <p><b data-i18n="reportItem1Title">Scope gap</b><span data-i18n="reportItem1Text">Maintenance exclusions need clarification.</span></p>
+              <p><b data-i18n="reportItem2Title">Payment risk</b><span data-i18n="reportItem2Text">Advance payment is not tied to a completed milestone.</span></p>
+              <p><b data-i18n="reportItem3Title">Questions to ask</b><span data-i18n="reportItem3Text">Confirm warranty, testing, exclusions, and response time.</span></p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="process-board scroll-reveal delay-2" aria-label="WhiteGrain process">
-          <article>
-            <i data-lucide="home"></i>
-            <span>Step 1</span>
-            <strong>Add project details</strong>
-            <p>Villa, renovation, majlis, handover, or fit-out. Add size, stage, and rough scope.</p>
-          </article>
-          <article>
+      <section class="section trust-section" id="trust">
+        <div class="trust-card">
+          <i data-lucide="lock-keyhole"></i>
+          <h2 data-i18n="trustTitle">Private by design</h2>
+          <ul>
+            <li data-i18n="trust1">Your documents are used only to prepare your review.</li>
+            <li data-i18n="trust2">We do not share your documents with contractors.</li>
+            <li data-i18n="trust3">This is a professional red-flag review, not legal advice.</li>
+          </ul>
+        </div>
+        <div class="final-cta">
+          <p class="eyebrow" data-i18n="finalEyebrow">Ready before signing</p>
+          <h2 data-i18n="finalTitle">Send the document first. Decide after the red flags are clear.</h2>
+          <a class="button button-primary" href="#upload">
             <i data-lucide="upload-cloud"></i>
-            <span>Step 2</span>
-            <strong>Upload any project files you already have</strong>
-            <p>Quote, BOQ, contract, technical specs, material list, drawings, payment schedule, or even partial documents.</p>
-          </article>
-          <article>
-            <i data-lucide="scan-search"></i>
-            <span>Step 3</span>
-            <strong>Advanced AI analyzes them</strong>
-            <p>It reviews costs, BOQ items, specs, materials, contract terms, payment stages, and discrepancies across files.</p>
-          </article>
-          <article>
-            <i data-lucide="layout-dashboard"></i>
-            <span>Step 4</span>
-            <strong>Get a dashboard, answers, and recommendations</strong>
-            <p>See what is missing, what conflicts, what to confirm, and ask questions about the uploaded files before you sign, pay, or push back.</p>
-          </article>
+            <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
+          </a>
         </div>
       </section>
-
-      <section class="ai-section" id="ai" aria-labelledby="ai-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow scroll-reveal">Advanced AI analysis</p>
-            <h2 id="ai-title" class="scroll-reveal delay-1">WhiteGrain will read the project files and turn them into an owner-friendly AI dashboard.</h2>
-          </div>
-          <p class="scroll-reveal delay-1">
-            The value is not just uploading a PDF. The AI will compare your
-            documents against each other, highlight discrepancies, explain
-            unclear items in simple language, and let you ask questions about
-            the files you uploaded.
-          </p>
-        </div>
-
-        <div class="ai-layout">
-          <div class="ai-dashboard scroll-reveal" aria-label="AI dashboard preview">
-            <div class="ai-window-top">
-              <span></span><span></span><span></span>
-              <strong>WhiteGrain AI Dashboard</strong>
-            </div>
-            <div class="ai-metrics">
-              <article>
-                <i data-lucide="file-warning"></i>
-                <strong>18</strong>
-                <span>Discrepancies</span>
-              </article>
-              <article>
-                <i data-lucide="badge-alert"></i>
-                <strong>24</strong>
-                <span>Missing details</span>
-              </article>
-              <article>
-                <i data-lucide="circle-dollar-sign"></i>
-                <strong>QAR</strong>
-                <span>Cost range</span>
-              </article>
-            </div>
-            <div class="ai-findings">
-              <div>
-                <span>Quote says</span>
-                <strong>Tiles included</strong>
-              </div>
-              <i data-lucide="arrow-right"></i>
-              <div class="risk">
-                <span>Needs clarity</span>
-                <strong>No allowance or credit rule</strong>
-              </div>
-            </div>
-            <div class="ai-findings">
-              <div>
-                <span>BOQ says</span>
-                <strong>AC lump sum</strong>
-              </div>
-              <i data-lucide="arrow-right"></i>
-              <div class="risk">
-                <span>Needs clarity</span>
-                <strong>No brand, tonnage, or testing</strong>
-              </div>
-            </div>
-            <div class="ai-question-preview">
-              <div>
-                <i data-lucide="message-circle-question"></i>
-                <strong>Ask about uploaded files</strong>
-              </div>
-              <p>Can I change the tiles later and get the price difference?</p>
-              <span>WhiteGrain checks the quote and flags that no allowance, brand, supplier, or credit rule is stated.</span>
-            </div>
-          </div>
-
-          <div class="ai-capabilities">
-            <article class="scroll-reveal delay-1">
-              <i data-lucide="scan-text"></i>
-              <strong>Document understanding</strong>
-              <p>Read quotes, BOQs, contracts, technical specs, payment schedules, and material lists.</p>
-            </article>
-            <article class="scroll-reveal delay-2">
-              <i data-lucide="git-compare-arrows"></i>
-              <strong>Discrepancy detection</strong>
-              <p>Compare files against each other and flag mismatches, missing items, exclusions, and vague wording.</p>
-            </article>
-            <article class="scroll-reveal delay-3">
-              <i data-lucide="sparkles"></i>
-              <strong>Recommendations</strong>
-              <p>Explain what to clarify, what to ask for, and what might affect cost, quality, or payment risk.</p>
-            </article>
-            <article class="scroll-reveal delay-4">
-              <i data-lucide="message-circle-question"></i>
-              <strong>Ask anything about your files</strong>
-              <p>Ask free-form questions about uploaded documents and get answers, explanations, and recommendations based on the project files.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="scope-section" id="checks" aria-labelledby="checks-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow scroll-reveal">What it checks</p>
-            <h2 id="checks-title" class="scroll-reveal delay-1">WhiteGrain is organized around real homeowner decisions.</h2>
-          </div>
-          <p class="scroll-reveal delay-1">
-            Instead of generic AI chat, the app will focus on the decisions
-            you actually need to make before choosing a contractor, signing,
-            paying, or approving work.
-          </p>
-        </div>
-
-        <div class="scope-grid refined">
-          <article class="scope-card is-disabled scroll-reveal" aria-disabled="true">
-            <i data-lucide="calculator"></i>
-            <span>Cost</span>
-            <h3>Cost calculator coming later.</h3>
-            <p>This section will be worked on after the file review, findings, to-dos, questions, and reports are stable.</p>
-          </article>
-          <article class="scope-card dark scroll-reveal delay-1">
-            <i data-lucide="file-spreadsheet"></i>
-            <span>BOQ</span>
-            <h3>What is missing from the BOQ?</h3>
-            <p>Find missing quantities, vague descriptions, lump sums, exclusions, and unrealistic allowances.</p>
-          </article>
-          <article class="scope-card scroll-reveal delay-2">
-            <i data-lucide="clipboard-check"></i>
-            <span>Specs</span>
-            <h3>Are the technical specs clear?</h3>
-            <p>Check concrete, waterproofing, cable specs, AC insulation, paint, and workmanship details.</p>
-          </article>
-          <article class="scope-card scroll-reveal delay-3">
-            <i data-lucide="blocks"></i>
-            <span>Materials</span>
-            <h3>Can I change materials later?</h3>
-            <p>Check brands, tile allowance, supplier choice, upgrade cost, substitutions, and price difference rules.</p>
-          </article>
-          <article class="scope-card dark scroll-reveal delay-2">
-            <i data-lucide="file-warning"></i>
-            <span>Contract</span>
-            <h3>Is the payment schedule safe?</h3>
-            <p>Review payment stages, variation rules, warranty, retention, delays, and handover conditions.</p>
-          </article>
-          <article class="scope-card image-card scroll-reveal delay-3">
-            <img src="assets/material-review-visual.png" alt="Material samples and BOQ documents for construction review" />
-          </article>
-        </div>
-      </section>
-
-      <section class="report-section" id="report" aria-labelledby="report-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow scroll-reveal">What you get</p>
-            <h2 id="report-title" class="scroll-reveal delay-1">An AI-generated dashboard, report, and question area for your project.</h2>
-          </div>
-          <p class="scroll-reveal delay-1">
-            The end result is not only a chat. It is a practical AI review:
-            what the documents say, what they do not say, where they disagree,
-            what looks risky, and what the user can ask next.
-          </p>
-        </div>
-
-        <div class="deliverables-grid" aria-label="WhiteGrain report deliverables">
-          <article class="scroll-reveal">
-            <i data-lucide="coins"></i>
-            <strong>Cost range</strong>
-            <span>Rough estimate and cost-per-sqm context.</span>
-          </article>
-          <article class="scroll-reveal delay-1">
-            <i data-lucide="badge-alert"></i>
-            <strong>Missing items</strong>
-            <span>BOQ, specs, materials, payments, and exclusions.</span>
-          </article>
-          <article class="scroll-reveal delay-2">
-            <i data-lucide="message-circle-question"></i>
-            <strong>Free-form questions</strong>
-            <span>Ask anything about uploaded documents.</span>
-          </article>
-          <article class="scroll-reveal delay-3">
-            <i data-lucide="layout-dashboard"></i>
-            <strong>AI dashboard</strong>
-            <span>Findings, discrepancies, and recommendations.</span>
-          </article>
-        </div>
-
-        <div class="report-layout">
-          <div class="review-panel scroll-reveal" aria-label="WhiteGrain review report preview">
-            <div class="report-kicker">
-              <i data-lucide="file-check-2"></i>
-              <span>AI project review preview</span>
-            </div>
-            <div class="report-summary">
-              <div>
-                <span>Project review</span>
-                <strong>Villa + majlis</strong>
-              </div>
-              <div class="score-pill">29 items to clarify</div>
-            </div>
-            <div class="report-metrics">
-              <div><strong>QAR 2.85M - 3.64M</strong><span>Estimated range</span></div>
-              <div><strong>14</strong><span>BOQ findings</span></div>
-              <div><strong>6</strong><span>Material gaps</span></div>
-            </div>
-            <div class="finding-table compact">
-              <div class="table-row head">
-                <span>Item</span>
-                <span>Finding</span>
-                <span>Status</span>
-              </div>
-              <div class="table-row">
-                <span>Tiles</span>
-                <span>No allowance or credit rule</span>
-                <strong>Clarify</strong>
-              </div>
-              <div class="table-row">
-                <span>AC</span>
-                <span>Lump sum with no brand</span>
-                <strong>Risk</strong>
-              </div>
-              <div class="table-row">
-                <span>Payment</span>
-                <span>Not tied to completed work</span>
-                <strong>Check</strong>
-              </div>
-            </div>
-            <div class="report-footer-note">
-              <i data-lucide="info"></i>
-              <span>Not legal or engineering approval. Built to help you understand what to clarify before deciding.</span>
-            </div>
-          </div>
-
-          <div class="question-stack scroll-reveal delay-2" aria-label="Sample clarifications">
-            <div class="question-stack-top">
-              <i data-lucide="messages-square"></i>
-              <strong>Ask WhiteGrain about your uploaded files</strong>
-            </div>
-            <div class="ai-chat-card">
-              <span>You ask</span>
-              <p>Can I change the tiles later, and will I get the price difference?</p>
-            </div>
-            <div class="ai-chat-card answer">
-              <span>WhiteGrain answers</span>
-              <p>The uploaded quote says tiles are included, but it does not state the allowance, brand, supplier, or credit rule. Ask the contractor to confirm these before signing.</p>
-            </div>
-            <div class="ai-chat-card">
-              <span>You ask</span>
-              <p>Does the BOQ conflict with the technical specifications?</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="comparison-section" id="comparison" aria-labelledby="comparison-title">
-        <div class="section-heading split-heading">
-          <div>
-            <p class="eyebrow scroll-reveal">Quote comparison</p>
-            <h2 id="comparison-title" class="scroll-reveal delay-1">The cheapest quote can hide the most missing work.</h2>
-          </div>
-          <p class="scroll-reveal delay-1">
-            WhiteGrain will compare offers by scope, allowances, payment terms, and
-            exclusions, not just by the final number.
-          </p>
-        </div>
-        <div class="compare-board">
-          <article class="quote-card scroll-reveal">
-            <span>Contractor A</span>
-            <strong>QAR 2.95M</strong>
-            <p>Lower price, but several important items are unclear or excluded.</p>
-            <ul>
-              <li>External works excluded</li>
-              <li>No tile allowance</li>
-              <li>AC brand not stated</li>
-            </ul>
-          </article>
-          <article class="quote-card recommended scroll-reveal delay-1">
-            <span>Contractor B</span>
-            <strong>QAR 3.24M</strong>
-            <p>Higher price, but scope, materials, warranty, and payment milestones are clearer.</p>
-            <ul>
-              <li>Waterproofing system named</li>
-              <li>Material allowances listed</li>
-              <li>Handover requirements clearer</li>
-            </ul>
-          </article>
-          <article class="question-card scroll-reveal delay-2">
-            <i data-lucide="circle-help"></i>
-            <h3>What to ask before choosing</h3>
-            <p>Are exclusions really cheaper, or will they become variations later?</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="audience-section" aria-labelledby="audience-title">
-        <div class="section-heading center">
-          <p class="eyebrow scroll-reveal">Who it is for</p>
-          <h2 id="audience-title" class="scroll-reveal delay-1">For anyone in Qatar about to build, renovate, fit out, or hand over.</h2>
-        </div>
-        <div class="audience-grid">
-          <article class="scroll-reveal"><i data-lucide="house"></i><span>New villa</span></article>
-          <article class="scroll-reveal delay-1"><i data-lucide="hammer"></i><span>Renovation</span></article>
-          <article class="scroll-reveal delay-2"><i data-lucide="landmark"></i><span>Majlis or extension</span></article>
-          <article class="scroll-reveal delay-3"><i data-lucide="building-2"></i><span>Apartment handover</span></article>
-          <article class="scroll-reveal delay-4"><i data-lucide="store"></i><span>Shop, cafe, clinic, or office fit-out</span></article>
-        </div>
-      </section>
-
     </main>
 
-    <script src="whitegrain-version.js?v=20260627-app-home"></script>
+    <footer class="site-footer">
+      <span>WhiteGrain</span>
+      <a href="/app" data-i18n="login">Login</a>
+      <a href="#trust" data-i18n="navPrivacy">Privacy</a>
+    </footer>
+
+    <script src="whitegrain-version.js?v=20260629-redflag-flow"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@
       content="WhiteGrain reviews contractor quotes, BOQs, construction contracts, repair documents, and maintenance agreements for red flags before you sign or pay."
     />
     <title>WhiteGrain | Professional Red-Flag Review</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260629-redflag-flow" />
+    <link rel="stylesheet" href="whitegrain-version.css?v=20260629-simple-upload" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
@@ -78,16 +78,21 @@
 
           <aside class="guided-panel" aria-labelledby="uploadTitle">
             <form class="red-flag-form guided-form" id="redFlagForm">
-              <div class="panel-head">
+              <div class="panel-head simple-panel-head">
                 <span class="icon-badge"><i data-lucide="file-warning"></i></span>
                 <div>
                   <p class="eyebrow" data-i18n="uploadEyebrow">No account required</p>
-                  <h2 id="uploadTitle">Start here</h2>
+                  <h2 id="uploadTitle">Start with the document</h2>
+                  <p>Upload it, add your WhatsApp, and WhiteGrain will send the red flags there.</p>
                 </div>
               </div>
 
-              <label>
-                <span data-i18n="projectTypeLabel">Project type</span>
+              <label class="simple-field select-field">
+                <span class="big-step">1</span>
+                <span class="field-copy">
+                  <strong>What are you checking?</strong>
+                  <small>Choose the closest option.</small>
+                </span>
                 <select name="projectType" required>
                   <option value="" data-i18n="selectProject">Select project type</option>
                   <option value="villa-construction" data-i18n="projectVilla">Villa construction</option>
@@ -105,10 +110,13 @@
                   accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
                   required
                 />
+                <span class="big-step">2</span>
                 <span class="file-drop-icon"><i data-lucide="upload-cloud"></i></span>
-                <strong>Upload document</strong>
-                <small data-i18n="fileTypes">PDF, Word, Excel, JPG, PNG, WebP, text, or CSV.</small>
-                <b class="file-name" id="fileName">No file selected</b>
+                <span class="file-drop-copy">
+                  <strong>Tap here to upload</strong>
+                  <small data-i18n="fileTypes">PDF, Word, Excel, or clear photos.</small>
+                  <b class="file-name" id="fileName">No file selected</b>
+                </span>
               </label>
 
               <div class="analysis-status" id="analysisStatus" hidden>
@@ -117,14 +125,21 @@
               </div>
 
               <div class="contact-fields" id="contactFields">
-                <label>
-                  <span data-i18n="nameLabel">Name</span>
-                  <input type="text" name="name" autocomplete="name" required />
+                <label class="simple-field phone-field">
+                  <span class="big-step">3</span>
+                  <span class="field-copy">
+                    <strong>Where should we send it?</strong>
+                    <small>Add the WhatsApp number for the report.</small>
+                  </span>
+                  <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+974 55 123 456" required />
                 </label>
 
-                <label>
-                  <span data-i18n="whatsappLabel">WhatsApp number</span>
-                  <input type="tel" name="whatsapp" autocomplete="tel" placeholder="+974" required />
+                <label class="simple-field name-field">
+                  <span class="field-copy">
+                    <strong>Your name</strong>
+                    <small>So we know who the review is for.</small>
+                  </span>
+                  <input type="text" name="name" autocomplete="name" required />
                 </label>
 
                 <label class="worry-field">
@@ -146,7 +161,7 @@
               </button>
 
               <p class="form-note" id="formNote">
-                Upload a file, add your WhatsApp, then send it for review.
+                Upload the document and add WhatsApp. No signup needed.
               </p>
             </form>
 
@@ -325,6 +340,6 @@
       <a href="#trust" data-i18n="navPrivacy">Privacy</a>
     </footer>
 
-    <script src="whitegrain-version.js?v=20260629-redflag-flow"></script>
+    <script src="whitegrain-version.js?v=20260629-simple-upload"></script>
   </body>
 </html>

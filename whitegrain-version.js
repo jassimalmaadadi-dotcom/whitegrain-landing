@@ -98,6 +98,7 @@ const fileName = document.querySelector("#fileName");
 const contactFields = document.querySelector("#contactFields");
 const analysisStatus = document.querySelector("#analysisStatus");
 const guidedSteps = document.querySelectorAll("[data-flow-step]");
+const fileDrop = document.querySelector(".file-drop");
 
 const originalText = new Map();
 
@@ -139,10 +140,15 @@ function setFlowStep(step) {
 }
 
 function revealContactStep() {
+  form.classList.add("has-file");
+  fileDrop?.classList.add("is-selected");
   contactFields.hidden = false;
   analysisStatus.hidden = false;
   setFlowStep(2);
   submitButtonLabel.textContent = "Send report on WhatsApp";
+  window.setTimeout(() => {
+    form.querySelector('input[name="whatsapp"]')?.focus();
+  }, 140);
 }
 
 function showFormMessage(type, key) {
@@ -192,6 +198,9 @@ fileInput.addEventListener("change", () => {
   if (!file) {
     fileName.textContent = "No file selected";
     analysisStatus.hidden = true;
+    contactFields.hidden = true;
+    form.classList.remove("has-file");
+    fileDrop?.classList.remove("is-selected");
     submitButtonLabel.textContent = "Get 3 Free Red Flags";
     setFlowStep(1);
     return;

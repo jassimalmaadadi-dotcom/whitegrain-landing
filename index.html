@@ -40,101 +40,128 @@
     </header>
 
     <main>
-      <section class="hero" id="top">
-        <div class="hero-copy">
+      <section class="guided-hero" id="top">
+        <div class="hero-intro">
           <p class="eyebrow" data-i18n="heroEyebrow">Professional Red-Flag Review</p>
           <h1 data-i18n="heroTitle">Wait! Before You Sign</h1>
           <h2 data-i18n="heroSubheadline">Review your contractor &amp; maintenance documents first.</h2>
-          <p class="hero-text" data-i18n="heroText">
+          <p data-i18n="heroText">
             Upload your quote, BOQ, or repair/maintenance contract. WhiteGrain checks for scope gaps,
             vague specifications, compliance issues, payment risks, logic problems, and cost red flags.
           </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href="#upload">
-              <i data-lucide="upload-cloud"></i>
-              <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
-            </a>
-            <a class="button button-secondary" href="#sample-report">
-              <i data-lucide="file-search"></i>
-              <span data-i18n="secondaryCta">See Sample Report</span>
-            </a>
-          </div>
-
-          <div class="flow-strip" aria-label="Upload document to WhatsApp report">
-            <span><i data-lucide="file-up"></i><b data-i18n="flowUpload">Upload document</b></span>
-            <i data-lucide="arrow-right"></i>
-            <span><i data-lucide="shield-alert"></i><b data-i18n="flowReview">Red-flag review</b></span>
-            <i data-lucide="arrow-right"></i>
-            <span><i data-lucide="message-circle"></i><b data-i18n="flowWhatsapp">WhatsApp report</b></span>
-          </div>
         </div>
 
-        <aside class="upload-card" id="upload" aria-labelledby="uploadTitle">
-          <div class="upload-card-header">
-            <span class="icon-badge"><i data-lucide="file-warning"></i></span>
-            <div>
-              <p class="eyebrow" data-i18n="uploadEyebrow">No account required</p>
-              <h2 id="uploadTitle" data-i18n="uploadTitle">Upload for review</h2>
-            </div>
+        <div class="guided-flow" id="upload">
+          <div class="guided-steps" aria-label="WhiteGrain review steps">
+            <article class="guided-step is-active" data-flow-step="1">
+              <span class="step-chip">Step 1</span>
+              <div>
+                <h3>Upload your files</h3>
+                <p>Start with any contractor quote, BOQ, contract, repair document, or maintenance agreement.</p>
+              </div>
+            </article>
+            <article class="guided-step" data-flow-step="2">
+              <span class="step-chip">Step 2</span>
+              <div>
+                <h3>We start checking</h3>
+                <p>While the review is prepared, add your WhatsApp number so the report has somewhere to go.</p>
+              </div>
+            </article>
+            <article class="guided-step" data-flow-step="3">
+              <span class="step-chip">Step 3</span>
+              <div>
+                <h3>Get your report</h3>
+                <p>You receive clear red flags, recommendations, and questions to ask before signing or paying.</p>
+              </div>
+            </article>
           </div>
 
-          <form class="red-flag-form" id="redFlagForm">
-            <label>
-              <span data-i18n="nameLabel">Name</span>
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
+          <aside class="guided-panel" aria-labelledby="uploadTitle">
+            <form class="red-flag-form guided-form" id="redFlagForm">
+              <div class="panel-head">
+                <span class="icon-badge"><i data-lucide="file-warning"></i></span>
+                <div>
+                  <p class="eyebrow" data-i18n="uploadEyebrow">No account required</p>
+                  <h2 id="uploadTitle">Start here</h2>
+                </div>
+              </div>
 
-            <label>
-              <span data-i18n="whatsappLabel">WhatsApp number</span>
-              <input type="tel" name="whatsapp" autocomplete="tel" placeholder="+974" required />
-            </label>
+              <label>
+                <span data-i18n="projectTypeLabel">Project type</span>
+                <select name="projectType" required>
+                  <option value="" data-i18n="selectProject">Select project type</option>
+                  <option value="villa-construction" data-i18n="projectVilla">Villa construction</option>
+                  <option value="villa-renovation" data-i18n="projectRenovation">Villa renovation</option>
+                  <option value="maintenance-repair" data-i18n="projectMaintenance">Maintenance / repair work</option>
+                  <option value="fit-out" data-i18n="projectFitout">Fit-out</option>
+                  <option value="other" data-i18n="projectOther">Other</option>
+                </select>
+              </label>
 
-            <label>
-              <span data-i18n="projectTypeLabel">Project type</span>
-              <select name="projectType" required>
-                <option value="" data-i18n="selectProject">Select project type</option>
-                <option value="villa-construction" data-i18n="projectVilla">Villa construction</option>
-                <option value="villa-renovation" data-i18n="projectRenovation">Villa renovation</option>
-                <option value="maintenance-repair" data-i18n="projectMaintenance">Maintenance / repair work</option>
-                <option value="fit-out" data-i18n="projectFitout">Fit-out</option>
-                <option value="other" data-i18n="projectOther">Other</option>
-              </select>
-            </label>
+              <label class="file-drop">
+                <input
+                  type="file"
+                  name="document"
+                  accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
+                  required
+                />
+                <span class="file-drop-icon"><i data-lucide="upload-cloud"></i></span>
+                <strong>Upload document</strong>
+                <small data-i18n="fileTypes">PDF, Word, Excel, JPG, PNG, WebP, text, or CSV.</small>
+                <b class="file-name" id="fileName">No file selected</b>
+              </label>
 
-            <label>
-              <span data-i18n="documentLabel">Document upload</span>
-              <input
-                type="file"
-                name="document"
-                accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
-                required
-              />
-              <small data-i18n="fileTypes">PDF, Word, Excel, JPG, PNG, WebP, text, or CSV.</small>
-            </label>
+              <div class="analysis-status" id="analysisStatus" hidden>
+                <div class="progress-line"><span></span></div>
+                <p>Review started. Add WhatsApp while WhiteGrain prepares the red-flag report.</p>
+              </div>
 
-            <label>
-              <span data-i18n="worryLabel">What are you worried about? <em data-i18n="optional">(optional)</em></span>
-              <textarea name="note" rows="3"></textarea>
-            </label>
+              <div class="contact-fields" id="contactFields" hidden>
+                <label>
+                  <span data-i18n="nameLabel">Name</span>
+                  <input type="text" name="name" autocomplete="name" />
+                </label>
 
-            <label class="consent-row">
-              <input type="checkbox" name="consent" required />
-              <span data-i18n="consentText">
-                I agree that WhiteGrain can use this document only to prepare my review and contact me on WhatsApp.
-              </span>
-            </label>
+                <label>
+                  <span data-i18n="whatsappLabel">WhatsApp number</span>
+                  <input type="tel" name="whatsapp" autocomplete="tel" placeholder="+974" />
+                </label>
 
-            <button class="button button-primary form-submit" type="submit">
-              <i data-lucide="shield-check"></i>
-              <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
-            </button>
+                <label>
+                  <span data-i18n="worryLabel">What are you worried about? <em data-i18n="optional">(optional)</em></span>
+                  <textarea name="note" rows="3"></textarea>
+                </label>
 
-            <p class="form-note" id="formNote" data-i18n="formNote">
-              First review starts from 3 red flags. Full review options can be discussed on WhatsApp.
-            </p>
-          </form>
-        </aside>
+                <label class="consent-row">
+                  <input type="checkbox" name="consent" />
+                  <span data-i18n="consentText">
+                    I agree that WhiteGrain can use this document only to prepare my review and contact me on WhatsApp.
+                  </span>
+                </label>
+              </div>
+
+              <button class="button button-primary form-submit" type="submit">
+                <i data-lucide="shield-check"></i>
+                <span>Continue</span>
+              </button>
+
+              <p class="form-note" id="formNote">
+                Upload the document first. The WhatsApp details appear next.
+              </p>
+            </form>
+
+            <div class="panel-explainer">
+              <h3>What WhiteGrain looks for</h3>
+              <ul>
+                <li>Missing or vague scope</li>
+                <li>Weak specifications</li>
+                <li>Payment risks</li>
+                <li>Cost red flags</li>
+                <li>Questions to ask before signing</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
       </section>
 
       <section class="document-visual" aria-label="Document types WhiteGrain reviews">
@@ -227,7 +254,7 @@
         <div class="red-flag-list">
           <article>
             <i data-lucide="layers"></i>
-            <p data-i18n="flagTiles">“Tiles included” but no brand, size, origin, or allowance.</p>
+            <p data-i18n="flagTiles">"Tiles included" but no brand, size, origin, or allowance.</p>
           </article>
           <article>
             <i data-lucide="wind"></i>

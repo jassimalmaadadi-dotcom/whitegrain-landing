@@ -90,7 +90,13 @@ const navLinks = document.querySelector(".nav-links");
 const form = document.querySelector("#redFlagForm");
 const formNote = document.querySelector("#formNote");
 const submitButton = document.querySelector(".form-submit");
+const submitButtonLabel = submitButton?.querySelector("span");
 const sampleReportButton = document.querySelector("#sampleReportButton");
+const fileInput = document.querySelector('input[name="document"]');
+const fileName = document.querySelector("#fileName");
+const contactFields = document.querySelector("#contactFields");
+const analysisStatus = document.querySelector("#analysisStatus");
+const guidedSteps = document.querySelectorAll("[data-flow-step]");
 
 const originalText = new Map();
 
@@ -118,12 +124,28 @@ function closeMenu() {
   menuButton.setAttribute("aria-expanded", "false");
 }
 
+function setFlowStep(step) {
+  guidedSteps.forEach((item) => {
+    item.classList.toggle("is-active", item.dataset.flowStep === String(step));
+  });
+}
+
+function revealContactStep() {
+  contactFields.hidden = false;
+  analysisStatus.hidden = false;
+  setFlowStep(2);
+  submitButtonLabel.textContent = "Send report on WhatsApp";
+}
+
 function showFormMessage(type, key) {
   const defaultMessages = {
     formSuccess: "Your document has been received. WhiteGrain will review it and send your red-flag report on WhatsApp.",
     formMissingFile: "Upload a document before submitting.",
+    formMissingName: "Add your name so we know who the review is for.",
+    formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
     formMissingConsent: "Please confirm consent before submitting.",
-    formSending: "Preparing your request..."
+    formSending: "Preparing your request...",
+    formReady: "File selected. Add your WhatsApp number while the review is prepared."
   };
 
   const message = currentLanguage === "ar" && translations.ar[key] ? translations.ar[key] : defaultMessages[key];
@@ -153,15 +175,52 @@ sampleReportButton.addEventListener("click", () => {
   document.querySelector("#sample-report").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files?.[0];
+  if (!file) {
+    fileName.textContent = "No file selected";
+    contactFields.hidden = true;
+    analysisStatus.hidden = true;
+    submitButtonLabel.textContent = "Continue";
+    setFlowStep(1);
+    return;
+  }
+
+  fileName.textContent = file.name;
+  revealContactStep();
+  showFormMessage("", "formReady");
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const data = new FormData(form);
   const file = data.get("document");
+  const name = String(data.get("name") || "").trim();
+  const whatsapp = String(data.get("whatsapp") || "").trim();
   const consent = data.get("consent");
 
   if (!file || !file.name) {
     showFormMessage("error", "formMissingFile");
+    setFlowStep(1);
+    return;
+  }
+
+  if (contactFields.hidden) {
+    revealContactStep();
+    showFormMessage("", "formReady");
+    return;
+  }
+
+  if (!name) {
+    showFormMessage("error", "formMissingName");
+    form.querySelector('input[name="name"]').focus();
+    return;
+  }
+
+  if (!whatsapp) {
+    showFormMessage("error", "formMissingWhatsapp");
+    form.querySelector('input[name="whatsapp"]').focus();
     return;
   }
 
@@ -177,6 +236,7 @@ form.addEventListener("submit", (event) => {
   // TODO: connect this form to a secure upload endpoint and WhatsApp report workflow.
   window.setTimeout(() => {
     showFormMessage("success", "formSuccess");
+    setFlowStep(3);
     submitButton.classList.remove("is-loading");
     submitButton.disabled = false;
   }, 750);

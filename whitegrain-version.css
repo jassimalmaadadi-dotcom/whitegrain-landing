@@ -1051,3 +1051,354 @@ textarea {
     align-items: flex-start;
   }
 }
+
+/* Guided first-screen flow */
+.guided-hero {
+  width: min(1180px, calc(100% - 36px));
+  margin: 36px auto 26px;
+}
+
+.hero-intro {
+  max-width: 940px;
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+.hero-intro h1 {
+  margin: 0;
+  font-size: clamp(3.4rem, 9vw, 7.8rem);
+  line-height: 0.9;
+}
+
+.hero-intro h2 {
+  margin: 16px auto 0;
+  max-width: 820px;
+  font-size: clamp(1.55rem, 3.2vw, 2.7rem);
+  line-height: 1.05;
+}
+
+.hero-intro p:not(.eyebrow) {
+  max-width: 840px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
+}
+
+.guided-flow {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(420px, 1.22fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.guided-steps,
+.guided-panel {
+  border: 1px solid rgba(231, 223, 216, 0.88);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow);
+}
+
+.guided-steps {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.guided-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+  min-height: 132px;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--muted);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.guided-step.is-active {
+  border-color: rgba(143, 14, 53, 0.22);
+  background: #fff;
+  color: var(--ink);
+  transform: translateX(3px);
+}
+
+[dir="rtl"] .guided-step.is-active {
+  transform: translateX(-3px);
+}
+
+.step-chip {
+  display: inline-flex;
+  min-width: 64px;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  color: var(--burgundy);
+  padding: 7px 10px;
+  font-size: 0.76rem;
+  font-weight: 950;
+}
+
+.guided-step.is-active .step-chip {
+  background: var(--burgundy);
+  color: #fff;
+}
+
+.guided-step h3 {
+  margin: 0;
+  font-size: 1.22rem;
+}
+
+.guided-step p {
+  margin: 7px 0 0;
+  font-size: 0.96rem;
+}
+
+.guided-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(230px, 0.85fr);
+  gap: 18px;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 0.95;
+}
+
+.guided-form {
+  align-content: start;
+}
+
+.file-drop {
+  position: relative;
+  display: grid !important;
+  min-height: 210px;
+  place-items: center;
+  gap: 8px !important;
+  border: 2px dashed rgba(143, 14, 53, 0.24);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 247, 250, 0.92)),
+    radial-gradient(circle at 80% 20%, rgba(143, 14, 53, 0.14), transparent 16rem);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-drop input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-drop-icon {
+  display: inline-flex;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+}
+
+.file-drop-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.file-drop strong {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1;
+}
+
+.file-drop small,
+.file-name {
+  position: relative;
+  z-index: 1;
+}
+
+.file-name {
+  display: inline-flex;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  padding: 7px 12px;
+  font-size: 0.86rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.analysis-status {
+  border: 1px solid rgba(15, 127, 122, 0.18);
+  border-radius: 18px;
+  background: rgba(15, 127, 122, 0.08);
+  padding: 14px;
+}
+
+.analysis-status p {
+  margin: 10px 0 0;
+  color: #0c605c;
+  font-weight: 760;
+}
+
+.progress-line {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(15, 127, 122, 0.16);
+}
+
+.progress-line span {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--teal), #72c7bf);
+  animation: scanProgress 1.4s ease-in-out infinite;
+}
+
+@keyframes scanProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(245%);
+  }
+}
+
+[dir="rtl"] .progress-line span {
+  animation-name: scanProgressRtl;
+}
+
+@keyframes scanProgressRtl {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-245%);
+  }
+}
+
+.contact-fields {
+  display: grid;
+  gap: 14px;
+}
+
+.panel-explainer {
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgba(10, 10, 10, 0.94), rgba(84, 7, 32, 0.94)),
+    url("assets/material-review-visual.png") center / cover;
+  color: #fff;
+  padding: 24px;
+}
+
+.panel-explainer h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.35rem);
+  line-height: 1;
+}
+
+.panel-explainer ul {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panel-explainer li {
+  position: relative;
+  padding-inline-start: 24px;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 760;
+}
+
+.panel-explainer li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.65em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ffd3df;
+}
+
+@media (max-width: 1080px) {
+  .guided-flow,
+  .guided-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .guided-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .guided-step {
+    grid-template-columns: 1fr;
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 720px) {
+  .guided-hero {
+    width: min(100% - 22px, 1180px);
+    margin-top: 18px;
+  }
+
+  .hero-intro {
+    text-align: start;
+  }
+
+  .hero-intro h1 {
+    font-size: clamp(3rem, 17vw, 4.8rem);
+  }
+
+  .hero-intro h2 {
+    font-size: clamp(1.3rem, 6.5vw, 1.85rem);
+  }
+
+  .guided-steps {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    border-radius: 24px;
+  }
+
+  .guided-step {
+    min-height: auto;
+    grid-template-columns: auto 1fr;
+    padding: 15px;
+  }
+
+  .guided-panel {
+    border-radius: 24px;
+    padding: 16px;
+  }
+
+  .panel-head h2 {
+    font-size: 2.15rem;
+  }
+
+  .file-drop {
+    min-height: 190px;
+  }
+}

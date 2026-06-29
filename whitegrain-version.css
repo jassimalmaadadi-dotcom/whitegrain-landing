@@ -937,18 +937,33 @@ textarea {
 
 @media (max-width: 720px) {
   .site-header {
-    gap: 12px;
-    padding: 12px 14px;
+    display: flex;
+    min-height: 56px;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(255, 251, 247, 0.76);
+    border-bottom: 0;
   }
 
   .brand {
-    width: 124px;
-    min-width: 124px;
+    display: none;
+  }
+
+  .menu-button {
+    order: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+
+  .header-actions {
+    margin-left: auto;
   }
 
   .language-toggle {
     min-height: 42px;
-    padding: 0 12px;
+    padding: 0 13px;
   }
 
   .primary-link {

@@ -1,3 +1,6 @@
+const PUBLIC_REVIEW_ENDPOINT = "https://kfhhbetspgcvbkkvlwtg.functions.supabase.co/public-review-intake";
+const MAX_UPLOAD_FILES = 8;
+
 const translations = {
   ar: {
     navHow: "طريقة العمل",
@@ -6,6 +9,7 @@ const translations = {
     navReport: "التقرير",
     navPrivacy: "الخصوصية",
     login: "تسجيل الدخول",
+    admin: "Admin",
     primaryCta: "احصل على 3 ملاحظات مجانية",
     heroEyebrow: "مراجعة احترافية للملاحظات المهمة",
     heroWait: "انتظر!",
@@ -179,7 +183,9 @@ function refreshDynamicText() {
     submitButtonLabel.textContent = t("submitReady", "Get 3 Free Red Flags");
   }
 
-  showFormMessage(currentMessage.type, currentMessage.key, false);
+  if (currentMessage) {
+    showFormMessage(currentMessage.type, currentMessage.key, false);
+  }
 }
 
 function applyLanguage(language) {
@@ -233,6 +239,8 @@ function showFormMessage(type, key, remember = true) {
     formMissingName: "Add your name so we know who the review is for.",
     formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
     formMissingProject: "Select the project or document type.",
+    formTooManyFiles: `Upload up to ${MAX_UPLOAD_FILES} files at once.`,
+    formSubmitFailed: "Something went wrong. Please try again.",
     formReady: "Files selected. Add your WhatsApp number and choose the document type.",
     formSending: "Preparing your request..."
   };
@@ -244,6 +252,18 @@ function showFormMessage(type, key, remember = true) {
   if (!formNote) return;
 
   formNote.textContent = t(key, defaultMessages[key]);
+  formNote.classList.remove("success", "error");
+
+  if (type) {
+    formNote.classList.add(type);
+  }
+}
+
+function showDirectFormMessage(type, message) {
+  if (!formNote) return;
+
+  currentMessage = null;
+  formNote.textContent = message;
   formNote.classList.remove("success", "error");
 
   if (type) {
@@ -343,7 +363,7 @@ uploadZone?.addEventListener("drop", (event) => {
   handleFiles(fileInput.files);
 });
 
-form?.addEventListener("submit", (event) => {
+form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const data = new FormData(form);
@@ -353,6 +373,12 @@ form?.addEventListener("submit", (event) => {
 
   if (!files.length) {
     showFormMessage("error", "formMissingFile");
+    fileInput?.focus();
+    return;
+  }
+
+  if (files.length > MAX_UPLOAD_FILES) {
+    showFormMessage("error", "formTooManyFiles");
     fileInput?.focus();
     return;
   }
@@ -374,13 +400,36 @@ form?.addEventListener("submit", (event) => {
   submitButtonLabel.textContent = t("submitSending", "Sending...");
   showFormMessage("", "formSending");
 
-  // TODO: connect this public intake to secure storage and the WhatsApp report workflow.
-  window.setTimeout(() => {
+  data.set("language", currentLanguage);
+  data.set("pageUrl", window.location.href);
+  data.set("userAgent", window.navigator.userAgent);
+
+  try {
+    const response = await fetch(PUBLIC_REVIEW_ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: data,
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.error || t("formSubmitFailed", "Something went wrong. Please try again."));
+    }
+
     showFormMessage("success", "formSuccess");
+    form.reset();
+    resetUploadState();
+    showFormMessage("success", "formSuccess");
+  } catch (error) {
+    showDirectFormMessage(
+      "error",
+      error instanceof Error ? error.message : t("formSubmitFailed", "Something went wrong. Please try again.")
+    );
+  } finally {
     submitButton.classList.remove("is-loading");
     submitButton.disabled = false;
     submitButtonLabel.textContent = t("submitReady", "Get 3 Free Red Flags");
-  }, 850);
+  }
 });
 
 document.addEventListener("keydown", (event) => {

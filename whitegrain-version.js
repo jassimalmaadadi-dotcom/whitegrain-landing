@@ -70,7 +70,7 @@ const translations = {
     formReading: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formChecking: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formAlmostDone: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
-    formTimeout: "استغرق الإرسال وقتاً أطول من المتوقع. الرجاء المحاولة مرة أخرى.",
+    formTimeout: "تعذر تأكيد الاستلام. إذا وصلك تقرير واتساب فلا تحتاج إلى إعادة الإرسال.",
     formUploadInterrupted: "تعذر تأكيد استلام الملفات. الرجاء المحاولة مرة أخرى.",
     formNonJsonError: "تعذر تأكيد استلام الملفات. الرجاء المحاولة مرة أخرى.",
     formMissingFile: "ارفع ملفاً واحداً على الأقل قبل إرسال الطلب.",
@@ -262,7 +262,7 @@ function showFormMessage(type, key, remember = true) {
     formReading: "Still uploading files. Please keep this page open.",
     formChecking: "Still uploading files. Please keep this page open.",
     formAlmostDone: "Still uploading files. Please keep this page open.",
-    formTimeout: "This is taking longer than expected. Please try again.",
+    formTimeout: "WhiteGrain could not confirm the upload. If you receive a WhatsApp report, you do not need to submit again.",
     formUploadInterrupted: "WhiteGrain could not confirm the upload. Please try again.",
     formNonJsonError: "WhiteGrain could not confirm the upload. Please try again."
   };

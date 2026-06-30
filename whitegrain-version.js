@@ -50,7 +50,6 @@ const translations = {
     namePlaceholder: "اختياري",
     worryLabel: "ما الذي يقلقك؟ (اختياري)",
     optional: "(اختياري)",
-    consentText: "أوافق على استخدام هذا المستند فقط لإعداد المراجعة والتواصل معي عبر واتساب.",
     submitReady: "احصل على 3 ملاحظات مجانية",
     submitSending: "جاري إرسال الطلب...",
     formNote: "لا تحتاج إلى تسجيل حساب. سيتم إرسال التقرير على واتساب.",
@@ -60,7 +59,6 @@ const translations = {
     formMissingName: "أضف اسمك حتى نعرف لمن تكون المراجعة.",
     formMissingWhatsapp: "أضف رقم الواتساب حتى نرسل التقرير.",
     formMissingProject: "اختر نوع المشروع أو المستند.",
-    formMissingConsent: "يرجى تأكيد الموافقة قبل الإرسال.",
     sampleEyebrow: "نموذج سريع",
     sampleTitle: "كيف سيبدو تقرير الواتساب",
     sampleText: "ملخص عملي قصير: ماذا يقول المستند، لماذا يهم، وما الذي يجب أن تسأل عنه قبل التوقيع.",
@@ -233,7 +231,6 @@ function showFormMessage(type, key, remember = true) {
     formMissingName: "Add your name so we know who the review is for.",
     formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
     formMissingProject: "Select the project or document type.",
-    formMissingConsent: "Please confirm consent before submitting.",
     formReady: "File selected. Add your WhatsApp number and choose the document type.",
     formSending: "Preparing your request..."
   };
@@ -337,7 +334,6 @@ form?.addEventListener("submit", (event) => {
   const file = data.get("document");
   const whatsapp = String(data.get("whatsapp") || "").trim();
   const projectType = String(data.get("projectType") || "").trim();
-  const consent = data.get("consent");
 
   if (!file || !file.name) {
     showFormMessage("error", "formMissingFile");
@@ -354,11 +350,6 @@ form?.addEventListener("submit", (event) => {
   if (!projectType) {
     showFormMessage("error", "formMissingProject");
     form.querySelector('input[name="projectType"]')?.focus();
-    return;
-  }
-
-  if (!consent) {
-    showFormMessage("error", "formMissingConsent");
     return;
   }
 

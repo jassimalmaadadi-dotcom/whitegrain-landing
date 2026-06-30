@@ -1068,10 +1068,11 @@ html[dir="rtl"] .form-note {
 
 html[dir="rtl"] .headline-row {
   direction: ltr;
+  justify-content: center;
 }
 
 html[dir="rtl"] .headline-row .headline {
-  text-align: left;
+  text-align: center;
 }
 
 html[dir="rtl"] .whatsapp-mark {

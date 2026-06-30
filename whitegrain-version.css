@@ -95,6 +95,33 @@ textarea {
   mix-blend-mode: multiply;
 }
 
+.qatar-badge {
+  grid-column: 1;
+  justify-self: start;
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(155, 18, 59, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--burgundy);
+  padding: 0 12px;
+  box-shadow: 0 12px 26px rgba(5, 18, 31, 0.08);
+  font-size: 0.76rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.qatar-badge::before {
+  content: "";
+  width: 8px;
+  height: 18px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--burgundy) 0 50%, #fff 50% 100%);
+  box-shadow: inset 0 0 0 1px rgba(155, 18, 59, 0.12);
+}
+
 .header-actions {
   display: flex;
   grid-column: 3;
@@ -1157,6 +1184,20 @@ html[dir="rtl"] .sample-card::after {
     font-size: 0.84rem;
   }
 
+  .qatar-badge {
+    grid-column: 2;
+    justify-self: center;
+    min-height: 30px;
+    padding: 0 9px;
+    box-shadow: none;
+    font-size: 0.66rem;
+  }
+
+  .qatar-badge::before {
+    width: 7px;
+    height: 15px;
+  }
+
   .header-actions {
     grid-column: 3;
     justify-self: end;
@@ -1620,6 +1661,12 @@ html[dir="rtl"] .sample-card::after {
   .brand {
     min-height: 44px;
     font-size: 0.78rem;
+  }
+
+  .qatar-badge {
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 0.6rem;
   }
 
   .brand img {

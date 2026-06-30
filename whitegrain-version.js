@@ -1,8 +1,9 @@
-const PUBLIC_REVIEW_ENDPOINT = "https://kfhhbetspgcvbkkvlwtg.functions.supabase.co/public-review-intake";
+﻿const PUBLIC_REVIEW_ENDPOINT = "https://kfhhbetspgcvbkkvlwtg.functions.supabase.co/public-review-intake";
 const MAX_UPLOAD_FILES = 8;
 
 const translations = {
   ar: {
+    madeInQatar: "صنع في قطر",
     navHow: "طريقة العمل",
     navChecks: "ما نراجعه",
     navExamples: "أمثلة",

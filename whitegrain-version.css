@@ -793,6 +793,39 @@ textarea {
   color: #0a713e;
 }
 
+.form-note.success.rich-success {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  border: 1px solid rgba(247, 194, 49, 0.6);
+  background: linear-gradient(180deg, #fff8d8 0%, #fffdf2 100%);
+  color: var(--ink);
+  padding: 12px 14px;
+  box-shadow: 0 12px 28px rgba(247, 194, 49, 0.18);
+}
+
+.form-note.success.rich-success strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.form-note.success.rich-success > span {
+  display: grid;
+  gap: 3px;
+  line-height: 1.35;
+}
+
+.form-note.success.rich-success > span span {
+  display: block;
+}
+
 .form-note.error {
   display: block;
   background: #fff4f7;
@@ -1457,6 +1490,25 @@ html[dir="rtl"] .sample-card::after {
     background: #fff;
     padding: 8px 10px;
     font-size: 0.72rem;
+  }
+
+  .form-note.success.rich-success {
+    display: grid;
+    gap: 6px;
+    border: 1px solid rgba(247, 194, 49, 0.65);
+    background: linear-gradient(180deg, #fff8d8 0%, #fffdf4 100%);
+    padding: 10px 11px;
+    font-size: 0.72rem;
+  }
+
+  .form-note.success.rich-success strong {
+    padding: 4px 10px;
+    font-size: 0.78rem;
+  }
+
+  .form-note.success.rich-success > span {
+    gap: 2px;
+    line-height: 1.32;
   }
 
   .trust-row {

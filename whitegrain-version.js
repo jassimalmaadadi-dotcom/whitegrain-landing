@@ -58,7 +58,7 @@ const translations = {
     submitSending: "جاري المراجعة...",
     formNote: "لا تحتاج إلى تسجيل حساب. سيتم إرسال التقرير على واتساب.",
     formReady: "تم اختيار الملفات. أضف رقم الواتساب واختر نوع المستند.",
-    formSuccess: "تم الاستلام. سيبدأ خبراء WhiteGrain بمراجعة ملفاتك ورفع الملاحظات المهمة الآن. سيصلك التقرير على واتساب قريباً.",
+    formSuccess: "تم الاستلام!|سيبدأ خبراء WhiteGrain بمراجعة ملفاتك ورفع الملاحظات المهمة الآن.|سيصلك التقرير على واتساب قريباً.",
     formSending: "جاري رفع الملفات...",
     formReading: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formChecking: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
@@ -240,7 +240,7 @@ function toggleMenu() {
 function showFormMessage(type, key, remember = true) {
   const defaultMessages = {
     formNote: "No signup required. Your report is sent on WhatsApp.",
-    formSuccess: "Received. Our experts will start reviewing your files and raising red flags now. You will get your WhatsApp report soon.",
+    formSuccess: "Received!|Our experts will start reviewing your files and raising red flags now.|You will get your WhatsApp report soon.",
     formMissingFile: "Upload at least one file before submitting.",
     formMissingName: "Add your name so we know who the review is for.",
     formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
@@ -261,8 +261,24 @@ function showFormMessage(type, key, remember = true) {
 
   if (!formNote) return;
 
-  formNote.textContent = t(key, defaultMessages[key]);
-  formNote.classList.remove("success", "error");
+  formNote.classList.remove("success", "error", "rich-success");
+
+  if (key === "formSuccess") {
+    const [headline, ...bodyLines] = t(key, defaultMessages[key]).split("|");
+    formNote.textContent = "";
+    const headlineNode = document.createElement("strong");
+    headlineNode.textContent = headline;
+    const bodyNode = document.createElement("span");
+    bodyLines.forEach((line) => {
+      const lineNode = document.createElement("span");
+      lineNode.textContent = line;
+      bodyNode.appendChild(lineNode);
+    });
+    formNote.append(headlineNode, bodyNode);
+    formNote.classList.add("rich-success");
+  } else {
+    formNote.textContent = t(key, defaultMessages[key]);
+  }
 
   if (type) {
     formNote.classList.add(type);
@@ -274,7 +290,7 @@ function showDirectFormMessage(type, message) {
 
   currentMessage = null;
   formNote.textContent = message;
-  formNote.classList.remove("success", "error");
+  formNote.classList.remove("success", "error", "rich-success");
 
   if (type) {
     formNote.classList.add(type);

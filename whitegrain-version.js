@@ -55,10 +55,15 @@ const translations = {
     worryLabel: "ما الذي يقلقك؟ (اختياري)",
     optional: "(اختياري)",
     submitReady: "احصل على 3 ملاحظات مجانية",
-    submitSending: "جاري إرسال الطلب...",
+    submitSending: "جاري المراجعة...",
     formNote: "لا تحتاج إلى تسجيل حساب. سيتم إرسال التقرير على واتساب.",
     formReady: "تم اختيار الملفات. أضف رقم الواتساب واختر نوع المستند.",
     formSuccess: "تم استلام الملفات. سيقوم WhiteGrain بمراجعتها وإرسال تقرير الملاحظات عبر واتساب.",
+    formSending: "جاري رفع الملفات...",
+    formReading: "جاري قراءة صور المستندات. قد يستغرق ذلك دقيقة.",
+    formChecking: "جاري البحث عن الملاحظات المهمة والمخاطر...",
+    formAlmostDone: "قاربنا على الانتهاء. الرجاء إبقاء الصفحة مفتوحة.",
+    formTimeout: "استغرق الإرسال وقتاً أطول من المتوقع. الرجاء المحاولة مرة أخرى.",
     formMissingFile: "ارفع ملفاً واحداً على الأقل قبل إرسال الطلب.",
     formMissingName: "أضف اسمك حتى نعرف لمن تكون المراجعة.",
     formMissingWhatsapp: "أضف رقم الواتساب حتى نرسل التقرير.",
@@ -148,6 +153,7 @@ placeholderNodes.forEach((node) => {
 let currentLanguage = localStorage.getItem("whitegrainLandingLanguage") || "en";
 let currentMessage = { type: "", key: "formNote" };
 let hasSelectedFile = false;
+let submitProgressTimers = [];
 
 const languageLabel = document.querySelector("#languageLabel");
 const languageToggle = document.querySelector(".language-toggle");
@@ -242,7 +248,11 @@ function showFormMessage(type, key, remember = true) {
     formTooManyFiles: `Upload up to ${MAX_UPLOAD_FILES} files at once.`,
     formSubmitFailed: "Something went wrong. Please try again.",
     formReady: "Files selected. Add your WhatsApp number and choose the document type.",
-    formSending: "Preparing your request..."
+    formSending: "Uploading your files...",
+    formReading: "Reading the document photos. This can take up to a minute.",
+    formChecking: "Checking for red flags, missing details, and payment risks...",
+    formAlmostDone: "Almost done. Please keep this page open.",
+    formTimeout: "This is taking longer than expected. Please try again."
   };
 
   if (remember) {
@@ -269,6 +279,32 @@ function showDirectFormMessage(type, message) {
   if (type) {
     formNote.classList.add(type);
   }
+}
+
+function clearSubmitProgress() {
+  submitProgressTimers.forEach((timer) => window.clearTimeout(timer));
+  submitProgressTimers = [];
+}
+
+function startSubmitProgress() {
+  clearSubmitProgress();
+
+  const stages = [
+    { delay: 4500, key: "formReading", label: "Reading files..." },
+    { delay: 14000, key: "formChecking", label: "Checking red flags..." },
+    { delay: 30000, key: "formAlmostDone", label: "Almost done..." },
+  ];
+
+  stages.forEach((stage) => {
+    const timer = window.setTimeout(() => {
+      if (!submitButton?.disabled) return;
+      showFormMessage("", stage.key);
+      if (submitButtonLabel) {
+        submitButtonLabel.textContent = t(stage.key, stage.label);
+      }
+    }, stage.delay);
+    submitProgressTimers.push(timer);
+  });
 }
 
 function revealContactStep() {
@@ -397,18 +433,23 @@ form?.addEventListener("submit", async (event) => {
 
   submitButton.classList.add("is-loading");
   submitButton.disabled = true;
-  submitButtonLabel.textContent = t("submitSending", "Sending...");
+  submitButtonLabel.textContent = t("formSending", "Uploading files...");
   showFormMessage("", "formSending");
+  startSubmitProgress();
 
   data.set("language", currentLanguage);
   data.set("pageUrl", window.location.href);
   data.set("userAgent", window.navigator.userAgent);
+
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 90000);
 
   try {
     const response = await fetch(PUBLIC_REVIEW_ENDPOINT, {
       method: "POST",
       headers: { Accept: "application/json" },
       body: data,
+      signal: controller.signal,
     });
     const result = await response.json().catch(() => ({}));
 
@@ -421,11 +462,19 @@ form?.addEventListener("submit", async (event) => {
     resetUploadState();
     showFormMessage("success", "formSuccess");
   } catch (error) {
+    const fallbackMessage =
+      error?.name === "AbortError"
+        ? t("formTimeout", "This is taking longer than expected. Please try again.")
+        : error instanceof Error
+          ? error.message
+          : t("formSubmitFailed", "Something went wrong. Please try again.");
     showDirectFormMessage(
       "error",
-      error instanceof Error ? error.message : t("formSubmitFailed", "Something went wrong. Please try again.")
+      fallbackMessage
     );
   } finally {
+    window.clearTimeout(timeoutId);
+    clearSubmitProgress();
     submitButton.classList.remove("is-loading");
     submitButton.disabled = false;
     submitButtonLabel.textContent = t("submitReady", "Get 3 Free Red Flags");

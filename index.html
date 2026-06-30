@@ -8,7 +8,7 @@
       content="WhiteGrain reviews contractor quotes, BOQs, repair documents, and maintenance contracts for red flags before you sign or pay."
     />
     <title>WhiteGrain | Red-Flag Document Review</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260630-mobile-header-flow" />
+    <link rel="stylesheet" href="whitegrain-version.css?v=20260630-multifile-upload" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
@@ -118,19 +118,20 @@
               type="file"
               name="document"
               accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
+              multiple
               required
             />
-            <span class="upload-icon"><i data-lucide="upload-cloud"></i></span>
+            <span class="upload-icon" aria-hidden="true"><i data-lucide="files"></i></span>
             <span class="upload-copy">
-              <strong data-i18n="uploadTitle">Tap to upload document</strong>
-              <small data-i18n="uploadHint">PDF, JPG, PNG, Word, Excel up to 25MB</small>
-              <b class="file-name" id="fileName" data-i18n="fileEmpty">No file selected</b>
+              <strong data-i18n="uploadTitle">Tap to upload files</strong>
+              <small data-i18n="uploadHint">PDF, images, Word, or Excel. Upload one or many.</small>
+              <b class="file-name" id="fileName" data-i18n="fileEmpty">No files selected</b>
             </span>
           </label>
 
           <div class="scan-status" id="analysisStatus" hidden>
             <div class="scan-bar"><span></span></div>
-            <p data-i18n="scanStatus">File selected. Add WhatsApp and get your red flags.</p>
+            <p data-i18n="scanStatus">Files selected. Add WhatsApp and get your red flags.</p>
           </div>
 
           <p class="form-note" id="formNote" data-i18n="formNote">
@@ -256,6 +257,6 @@
       <a href="/app" data-i18n="login">Login</a>
     </footer>
 
-    <script src="whitegrain-version.js?v=20260630-mobile-header-flow"></script>
+    <script src="whitegrain-version.js?v=20260630-multifile-upload"></script>
   </body>
 </html>

@@ -40,10 +40,10 @@ const translations = {
     projectVillaShort: "فيلا",
     projectRenovationShort: "ترميم",
     projectMaintenanceShort: "صيانة / إصلاح",
-    uploadTitle: "اضغط لرفع المستند",
-    uploadHint: "PDF أو JPG أو PNG أو Word أو Excel حتى 25MB",
-    fileEmpty: "لم يتم اختيار ملف",
-    scanStatus: "تم اختيار الملف. أضف رقم الواتساب لتحصل على الملاحظات.",
+    uploadTitle: "اضغط لرفع الملفات",
+    uploadHint: "PDF أو صور أو Word أو Excel. يمكنك رفع ملف واحد أو عدة ملفات.",
+    fileEmpty: "لم يتم اختيار ملفات",
+    scanStatus: "تم اختيار الملفات. أضف رقم الواتساب لتحصل على الملاحظات.",
     whatsappLabel: "رقم الواتساب",
     whatsappPlaceholder: "رقم الواتساب",
     nameLabel: "الاسم",
@@ -53,9 +53,9 @@ const translations = {
     submitReady: "احصل على 3 ملاحظات مجانية",
     submitSending: "جاري إرسال الطلب...",
     formNote: "لا تحتاج إلى تسجيل حساب. سيتم إرسال التقرير على واتساب.",
-    formReady: "تم اختيار الملف. أضف رقم الواتساب واختر نوع المستند.",
-    formSuccess: "تم استلام المستند. سيقوم WhiteGrain بمراجعته وإرسال تقرير الملاحظات عبر واتساب.",
-    formMissingFile: "ارفع مستنداً قبل إرسال الطلب.",
+    formReady: "تم اختيار الملفات. أضف رقم الواتساب واختر نوع المستند.",
+    formSuccess: "تم استلام الملفات. سيقوم WhiteGrain بمراجعتها وإرسال تقرير الملاحظات عبر واتساب.",
+    formMissingFile: "ارفع ملفاً واحداً على الأقل قبل إرسال الطلب.",
     formMissingName: "أضف اسمك حتى نعرف لمن تكون المراجعة.",
     formMissingWhatsapp: "أضف رقم الواتساب حتى نرسل التقرير.",
     formMissingProject: "اختر نوع المشروع أو المستند.",
@@ -170,7 +170,9 @@ function t(key, fallback = "") {
 
 function refreshDynamicText() {
   if (!hasSelectedFile && fileName) {
-    fileName.textContent = t("fileEmpty", "No file selected");
+    fileName.textContent = t("fileEmpty", "No files selected");
+  } else if (hasSelectedFile && fileInput?.files?.length) {
+    fileName.textContent = formatFileSummary(fileInput.files);
   }
 
   if (submitButtonLabel && !submitButton.disabled) {
@@ -226,12 +228,12 @@ function toggleMenu() {
 function showFormMessage(type, key, remember = true) {
   const defaultMessages = {
     formNote: "No signup required. Your report is sent on WhatsApp.",
-    formSuccess: "Your document has been received. WhiteGrain will review it and send your red-flag report on WhatsApp.",
-    formMissingFile: "Upload a document before submitting.",
+    formSuccess: "Your files have been received. WhiteGrain will review them and send your red-flag report on WhatsApp.",
+    formMissingFile: "Upload at least one file before submitting.",
     formMissingName: "Add your name so we know who the review is for.",
     formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
     formMissingProject: "Select the project or document type.",
-    formReady: "File selected. Add your WhatsApp number and choose the document type.",
+    formReady: "Files selected. Add your WhatsApp number and choose the document type.",
     formSending: "Preparing your request..."
   };
 
@@ -266,7 +268,7 @@ function revealContactStep() {
 
 function resetUploadState() {
   hasSelectedFile = false;
-  fileName.textContent = t("fileEmpty", "No file selected");
+  fileName.textContent = t("fileEmpty", "No files selected");
   analysisStatus.hidden = true;
   contactFields.hidden = false;
   form.classList.remove("has-file");
@@ -274,13 +276,27 @@ function resetUploadState() {
   showFormMessage("", "formNote");
 }
 
-function handleFile(file) {
-  if (!file) {
+function formatFileSummary(files) {
+  const count = files?.length || 0;
+
+  if (count === 0) {
+    return t("fileEmpty", "No files selected");
+  }
+
+  if (count === 1) {
+    return files[0]?.name || t("fileEmpty", "No files selected");
+  }
+
+  return currentLanguage === "ar" ? `${count} ملفات مختارة` : `${count} files selected`;
+}
+
+function handleFiles(files) {
+  if (!files?.length) {
     resetUploadState();
     return;
   }
 
-  fileName.textContent = file.name;
+  fileName.textContent = formatFileSummary(files);
   revealContactStep();
 }
 
@@ -302,7 +318,7 @@ navLinks?.querySelectorAll("a").forEach((link) => {
 });
 
 fileInput?.addEventListener("change", () => {
-  handleFile(fileInput.files?.[0]);
+  handleFiles(fileInput.files);
 });
 
 uploadZone?.addEventListener("dragover", (event) => {
@@ -318,24 +334,24 @@ uploadZone?.addEventListener("drop", (event) => {
   event.preventDefault();
   uploadZone.classList.remove("is-dragging");
 
-  const file = event.dataTransfer?.files?.[0];
-  if (!file || !fileInput) return;
+  const files = Array.from(event.dataTransfer?.files || []);
+  if (!files.length || !fileInput) return;
 
   const transfer = new DataTransfer();
-  transfer.items.add(file);
+  files.forEach((file) => transfer.items.add(file));
   fileInput.files = transfer.files;
-  handleFile(file);
+  handleFiles(fileInput.files);
 });
 
 form?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const data = new FormData(form);
-  const file = data.get("document");
+  const files = fileInput?.files || [];
   const whatsapp = String(data.get("whatsapp") || "").trim();
   const projectType = String(data.get("projectType") || "").trim();
 
-  if (!file || !file.name) {
+  if (!files.length) {
     showFormMessage("error", "formMissingFile");
     fileInput?.focus();
     return;

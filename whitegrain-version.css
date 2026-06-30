@@ -150,23 +150,6 @@ textarea {
   grid-area: copy;
 }
 
-.headline-row {
-  display: flex;
-  direction: ltr;
-  align-items: center;
-  gap: clamp(12px, 2.4vw, 24px);
-}
-
-.headline-qatar-badge {
-  width: clamp(86px, 10vw, 132px);
-  height: clamp(86px, 10vw, 132px);
-  flex: 0 0 auto;
-  border-radius: 50%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 16px 24px rgba(139, 0, 43, 0.12));
-}
-
 .eyebrow {
   margin: 0 0 6px;
   color: var(--burgundy);
@@ -213,6 +196,32 @@ textarea {
 
 .hero-subtitle strong {
   color: var(--whatsapp);
+}
+
+.local-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  border: 1px solid rgba(139, 0, 43, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--burgundy);
+  padding: 6px 14px 6px 7px;
+  box-shadow: 0 12px 28px rgba(5, 18, 31, 0.08);
+  font-weight: 950;
+}
+
+.local-proof img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.local-proof span {
+  white-space: nowrap;
 }
 
 .review-visual {
@@ -1066,15 +1075,6 @@ html[dir="rtl"] .form-note {
   text-align: center;
 }
 
-html[dir="rtl"] .headline-row {
-  direction: ltr;
-  justify-content: center;
-}
-
-html[dir="rtl"] .headline-row .headline {
-  text-align: center;
-}
-
 html[dir="rtl"] .whatsapp-mark {
   margin-right: 8px;
   margin-left: 0;
@@ -1213,28 +1213,16 @@ html[dir="rtl"] .sample-card::after {
     display: none;
   }
 
-  .headline-row {
-    justify-content: flex-start;
-    gap: 8px;
-    padding-top: 2px;
-  }
-
-  .headline-qatar-badge {
-    width: clamp(62px, 16vw, 78px);
-    height: clamp(62px, 16vw, 78px);
-    filter: none;
-  }
-
   .headline {
-    text-align: left;
+    text-align: center;
   }
 
   .headline span {
-    font-size: clamp(2.4rem, 12.2vw, 3.3rem);
+    font-size: clamp(2.65rem, 13.8vw, 3.65rem);
   }
 
   .headline strong {
-    font-size: clamp(1.62rem, 8.2vw, 2.28rem);
+    font-size: clamp(1.82rem, 9.5vw, 2.58rem);
   }
 
   .hero-subtitle {
@@ -1244,6 +1232,21 @@ html[dir="rtl"] .sample-card::after {
     font-weight: 720;
     line-height: 1.28;
     text-align: center;
+  }
+
+  .local-proof {
+    display: flex;
+    width: fit-content;
+    margin: 8px auto 0;
+    padding: 5px 12px 5px 6px;
+    gap: 8px;
+    font-size: 0.82rem;
+    box-shadow: none;
+  }
+
+  .local-proof img {
+    width: 34px;
+    height: 34px;
   }
 
   .review-visual {
@@ -1677,11 +1680,6 @@ html[dir="rtl"] .sample-card::after {
     min-height: calc(100svh - 44px);
     gap: 4px;
     padding: 2px 0 8px;
-  }
-
-  .headline-qatar-badge {
-    width: clamp(58px, 15vw, 70px);
-    height: clamp(58px, 15vw, 70px);
   }
 
   .headline span {

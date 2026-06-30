@@ -1,87 +1,145 @@
 const translations = {
   ar: {
     navHow: "طريقة العمل",
-    navReview: "ما نراجعه",
-    navFlags: "أمثلة على الملاحظات",
-    navReport: "نموذج التقرير",
+    navChecks: "ما نراجعه",
+    navExamples: "أمثلة",
+    navReport: "التقرير",
     navPrivacy: "الخصوصية",
     login: "تسجيل الدخول",
     primaryCta: "احصل على 3 ملاحظات مجانية",
-    secondaryCta: "شاهد نموذج التقرير",
-    heroEyebrow: "مراجعة احترافية للمخاطر",
+    heroEyebrow: "مراجعة احترافية للملاحظات المهمة",
+    heroWait: "انتظر!",
+    heroBefore: "قبل أن توقع",
     heroTitle: "انتظر! قبل أن توقّع",
-    heroSubheadline: "راجع مستندات المقاول والصيانة أولاً.",
+    heroSubLine1: "ارفع مستند المقاول أو جدول الكميات أو مستند الإصلاح/الصيانة.",
+    heroSubLine2: "نراجعه ونرسل لك التقرير على",
+    whatsappWord: "واتساب",
+    heroSubheadline: "ارفع مستند المقاول أو جدول الكميات أو مستند الإصلاح/الصيانة. نراجعه ونرسل لك التقرير على واتساب.",
     heroText:
-      "ارفع عرض السعر أو جدول الكميات أو عقد الإصلاح أو الصيانة. يراجع WhiteGrain فجوات النطاق، المواصفات غير الواضحة، ملاحظات الامتثال، مخاطر الدفع، المشاكل المنطقية، ومؤشرات التكلفة.",
-    flowUpload: "ارفع المستند",
-    flowReview: "مراجعة الملاحظات",
-    flowWhatsapp: "تقرير واتساب",
-    uploadEyebrow: "بدون إنشاء حساب",
-    uploadTitle: "ارفع المستند للمراجعة",
-    nameLabel: "الاسم",
-    whatsappLabel: "رقم الواتساب",
-    projectTypeLabel: "نوع المشروع",
+      "ارفع عرض السعر أو جدول الكميات أو عقد الإصلاح أو الصيانة. يراجع WhiteGrain المستند للبحث عن نطاق غير واضح، مواصفات ضعيفة، مخاطر دفع، بنود ناقصة، ملاحظات امتثال، ومؤشرات تكلفة.",
+    flow1: "ارفع الملف",
+    flow2: "المراجعة",
+    flow3: "تقرير واتساب",
+    visualQuote: "عرض المقاول",
+    visualRepair: "عقد إصلاح / صيانة",
+    waFlags: "ملاحظات مهمة",
+    waCosts: "مخاطر تكلفة",
+    waMissing: "بنود ناقصة",
+    waTerms: "شروط غير واضحة",
+    proof1: "فجوات النطاق",
+    proof2: "مخاطر الدفع",
+    proof3: "ملاحظات المواصفات",
+    intakeTopline: "ابدأ المراجعة هنا",
+    projectTypeLabel: "ما نوع المستند؟",
     selectProject: "اختر نوع المشروع",
     projectVilla: "بناء فيلا",
     projectRenovation: "ترميم فيلا",
-    projectMaintenance: "أعمال صيانة / إصلاح",
-    projectFitout: "تجهيز داخلي",
+    projectMaintenance: "صيانة / إصلاح",
+    projectFitout: "تشطيب داخلي",
     projectOther: "أخرى",
-    documentLabel: "رفع المستند",
-    fileTypes: "PDF أو Word أو Excel أو JPG أو PNG أو WebP أو نص أو CSV.",
-    worryLabel: "ما الذي يقلقك؟",
+    projectVillaShort: "فيلا",
+    projectRenovationShort: "ترميم",
+    projectMaintenanceShort: "صيانة / إصلاح",
+    uploadTitle: "اضغط لرفع المستند",
+    uploadHint: "PDF أو JPG أو PNG أو Word أو Excel حتى 25MB",
+    fileEmpty: "لم يتم اختيار ملف",
+    scanStatus: "تم اختيار الملف. أضف رقم الواتساب لتحصل على الملاحظات.",
+    whatsappLabel: "رقم الواتساب",
+    whatsappPlaceholder: "رقم الواتساب",
+    nameLabel: "الاسم",
+    namePlaceholder: "اختياري",
+    worryLabel: "ما الذي يقلقك؟ (اختياري)",
     optional: "(اختياري)",
-    consentText:
-      "أوافق على استخدام WhiteGrain لهذا المستند فقط لإعداد المراجعة والتواصل معي على واتساب.",
-    formNote: "تبدأ المراجعة الأولى من 3 ملاحظات. يمكن مناقشة خيارات المراجعة الكاملة عبر واتساب.",
-    formSuccess: "تم استلام المستند. سيراجعه WhiteGrain ويرسل تقرير الملاحظات على واتساب.",
+    consentText: "أوافق على استخدام هذا المستند فقط لإعداد المراجعة والتواصل معي عبر واتساب.",
+    submitReady: "احصل على 3 ملاحظات مجانية",
+    submitSending: "جاري إرسال الطلب...",
+    formNote: "لا تحتاج إلى تسجيل حساب. سيتم إرسال التقرير على واتساب.",
+    formReady: "تم اختيار الملف. أضف رقم الواتساب واختر نوع المستند.",
+    formSuccess: "تم استلام المستند. سيقوم WhiteGrain بمراجعته وإرسال تقرير الملاحظات عبر واتساب.",
     formMissingFile: "ارفع مستنداً قبل إرسال الطلب.",
-    formMissingConsent: "يجب الموافقة على استخدام المستند لإعداد المراجعة.",
-    formSending: "جار تجهيز الطلب...",
-    howEyebrow: "عملية بسيطة",
-    howTitle: "كيف يعمل WhiteGrain",
+    formMissingName: "أضف اسمك حتى نعرف لمن تكون المراجعة.",
+    formMissingWhatsapp: "أضف رقم الواتساب حتى نرسل التقرير.",
+    formMissingProject: "اختر نوع المشروع أو المستند.",
+    formMissingConsent: "يرجى تأكيد الموافقة قبل الإرسال.",
+    samplePinsTitle: "أمثلة ملاحظات",
+    pinA: "قيمة البلاط غير محددة",
+    pinB: "مرحلة الدفع غير واضحة",
+    pinC: "وقت الاستجابة غير محدد",
+    phoneLabel: "تقرير واتساب",
+    phoneTitle: "3 ملاحظات جاهزة",
+    phoneText: "نقاط واضحة تسأل عنها قبل التوقيع.",
+    howEyebrow: "خطوات بسيطة",
+    howTitle: "ارفع المستند، نراجعه، يصلك التقرير على واتساب.",
     step1Title: "ارفع",
-    step1Text: "ارفع عرض السعر أو جدول الكميات أو العقد أو مستند الإصلاح أو الصيانة.",
+    step1Text: "ارسل عرض السعر أو جدول الكميات أو العقد أو مستند الإصلاح أو الصيانة.",
     step2Title: "مراجعة الملاحظات",
-    step2Text:
-      "يراجع WhiteGrain المستند بحثاً عن التفاصيل الناقصة، النطاق غير الواضح، المواصفات الضعيفة، ملاحظات الامتثال، مخاطر الدفع، ومعقولية التكلفة.",
+    step2Text: "يفحص WhiteGrain التفاصيل الناقصة، العبارات غير الواضحة، مخاطر الدفع، ومنطق التكلفة.",
     step3Title: "تقرير واتساب",
-    step3Text: "استلم تقريراً واضحاً فيه الملاحظات، التوصيات، والأسئلة التي يجب طرحها قبل التوقيع.",
-    reviewEyebrow: "مراجعة متخصصة للمستندات",
+    step3Text: "استلم الملاحظات والتوصيات والأسئلة التي يجب طرحها قبل التوقيع.",
+    reviewEyebrow: "مراجعة مستندات متخصصة",
     reviewTitle: "ما الذي يراجعه WhiteGrain",
-    reviewText: "مصمم لأصحاب المنازل في قطر عند مراجعة مستندات البناء، الإصلاح، التجهيز، والصيانة.",
+    reviewText: "مصمم لأصحاب المنازل في قطر عند مراجعة مستندات البناء والترميم والتشطيب والإصلاح والصيانة.",
     scopeGaps: "فجوات النطاق",
+    scopeText: "أعمال ناقصة أو غير واضحة.",
     specifications: "المواصفات",
+    specText: "علامات تجارية أو درجات أو اختبارات غير محددة.",
     compliance: "الامتثال",
+    complianceText: "بنود تحتاج تأكيداً مقابل المتطلبات.",
     logicCheck: "الفحص المنطقي",
+    logicText: "شروط متعارضة أو افتراضات غير واضحة.",
     paymentRisk: "مخاطر الدفع",
+    paymentText: "دفعات مقدمة، مراحل دفع، وتغييرات.",
     costReasonableness: "معقولية التكلفة",
-    flagsEyebrow: "قبل التوقيع",
-    flagsTitle: "أمثلة على الملاحظات",
-    flagsText: "توضح المراجعة البنود العملية التي قد تتحول لاحقاً إلى مشاكل تكلفة أو جودة أو دفع.",
-    flagTiles: "عبارة “البلاط مشمول” بدون تحديد العلامة أو المقاس أو المنشأ أو قيمة السماح.",
-    flagAc: "التكييف مذكور كمبلغ إجمالي بدون علامة أو طنّية أو عزل أو اختبار أو تشغيل.",
-    flagWaterproof: "العزل المائي مذكور بدون نوع النظام أو الضمان أو طريقة الاختبار.",
-    flagPayment: "دفعات غير مرتبطة بأعمال منجزة وقابلة للقياس.",
-    flagExclusions: "استثناءات قد تتحول لاحقاً إلى مطالبات تغيير أو مبالغ إضافية.",
-    sampleReportLabel: "معاينة نموذج تقرير",
-    freeFlags: "ملاحظات مجانية",
-    reportItem1Title: "فجوة في النطاق",
-    reportItem1Text: "استثناءات الصيانة تحتاج توضيحاً.",
+    costText: "بنود تبدو ناقصة أو غير مفصلة.",
+    flagsEyebrow: "أمثلة",
+    flagsTitle: "كيف تبدو الملاحظة المهمة",
+    flagTilesTitle: "البلاط مشمول",
+    flagTiles: "لا يوجد تحديد للعلامة أو المقاس أو المنشأ أو قيمة السماح أو فرق السعر عند تغيير الاختيار.",
+    flagAcTitle: "التكييف مبلغ إجمالي",
+    flagAc: "لا توجد علامة تجارية أو طنّية أو عزل دكت أو اختبار أو تشغيل أو تفاصيل ضمان.",
+    flagWaterproofTitle: "العزل المائي",
+    flagWaterproof: "نوع النظام والضمان واختبار الغمر وطريقة التنفيذ غير محددة.",
+    flagPaymentTitle: "مرحلة الدفع",
+    flagPayment: "الدفع مطلوب قبل وجود عمل منجز أو معتمد بشكل واضح وقابل للقياس.",
+    sampleReportLabel: "نموذج التقرير",
+    reportTitle: "واضح بما يكفي لتتصرف.",
+    reportText: "التقرير ليس مقالة فنية طويلة. يعطيك الملاحظات، لماذا تهم، وماذا تسأل بعد ذلك.",
+    reportItem1Title: "فجوة نطاق",
+    reportItem1Text: "اطلب من المقاول تحديد ما هو مشمول وما هو مستثنى بالضبط.",
     reportItem2Title: "مخاطر دفع",
-    reportItem2Text: "دفعة مقدمة غير مرتبطة بمرحلة مكتملة.",
+    reportItem2Text: "اربط الدفعة بعمل منجز أو فحص أو اعتماد.",
     reportItem3Title: "أسئلة يجب طرحها",
-    reportItem3Text: "أكد الضمان، الاختبارات، الاستثناءات، ووقت الاستجابة.",
-    trustTitle: "خصوصية واضحة",
+    reportItem3Text: "أكد الضمان والاختبارات والاستثناءات ووقت الاستجابة والتغييرات.",
+    trustTitle: "خصوصية من البداية",
+    trustNoSignup: "لا تحتاج إلى تسجيل حساب",
+    trustWhatsapp: "التقرير على واتساب",
+    trustPrivateTitle: "رفع خاص",
+    easyUnderstand: "سهل الفهم",
+    builtForDocs: "مصمم لمستندات المقاولين والصيانة",
     trust1: "تستخدم مستنداتك فقط لإعداد المراجعة.",
-    trust2: "لا نشارك مستنداتك مع المقاولين.",
-    trust3: "هذه مراجعة احترافية للملاحظات وليست استشارة قانونية.",
-    finalEyebrow: "كن جاهزاً قبل التوقيع",
-    finalTitle: "أرسل المستند أولاً. قرر بعد أن تتضح الملاحظات."
+    trust2Title: "لا نشاركها مع المقاول",
+    trust2: "لا نرسل مستنداتك إلى المقاول الذي تتم مراجعته.",
+    trust3Title: "حدود واضحة",
+    trust3: "هذه مراجعة احترافية للملاحظات المهمة وليست استشارة قانونية."
   }
 };
 
+const originalText = new Map();
+const nodesToTranslate = document.querySelectorAll("[data-i18n]");
+const originalPlaceholders = new Map();
+const placeholderNodes = document.querySelectorAll("[data-i18n-placeholder]");
+
+nodesToTranslate.forEach((node) => {
+  originalText.set(node, node.textContent);
+});
+
+placeholderNodes.forEach((node) => {
+  originalPlaceholders.set(node, node.getAttribute("placeholder") || "");
+});
+
 let currentLanguage = localStorage.getItem("whitegrainLandingLanguage") || "en";
+let currentMessage = { type: "", key: "formNote" };
+let hasSelectedFile = false;
 
 const languageLabel = document.querySelector("#languageLabel");
 const languageToggle = document.querySelector(".language-toggle");
@@ -90,21 +148,33 @@ const menuButton = document.querySelector(".menu-button");
 const navLinks = document.querySelector(".nav-links");
 const form = document.querySelector("#redFlagForm");
 const formNote = document.querySelector("#formNote");
-const submitButton = document.querySelector(".form-submit");
+const submitButton = document.querySelector(".submit-button");
 const submitButtonLabel = submitButton?.querySelector("span");
-const sampleReportButton = document.querySelector("#sampleReportButton");
 const fileInput = document.querySelector('input[name="document"]');
 const fileName = document.querySelector("#fileName");
 const contactFields = document.querySelector("#contactFields");
 const analysisStatus = document.querySelector("#analysisStatus");
-const guidedSteps = document.querySelectorAll("[data-flow-step]");
-const fileDrop = document.querySelector(".file-drop");
+const uploadZone = document.querySelector(".upload-zone");
 
-const originalText = new Map();
+function t(key, fallback = "") {
+  if (currentLanguage === "ar" && translations.ar[key]) {
+    return translations.ar[key];
+  }
 
-document.querySelectorAll("[data-i18n]").forEach((node) => {
-  originalText.set(node, node.textContent);
-});
+  return fallback || key;
+}
+
+function refreshDynamicText() {
+  if (!hasSelectedFile && fileName) {
+    fileName.textContent = t("fileEmpty", "No file selected");
+  }
+
+  if (submitButtonLabel && !submitButton.disabled) {
+    submitButtonLabel.textContent = t("submitReady", "Get 3 Free Red Flags");
+  }
+
+  showFormMessage(currentMessage.type, currentMessage.key, false);
+}
 
 function applyLanguage(language) {
   currentLanguage = language;
@@ -112,129 +182,172 @@ function applyLanguage(language) {
 
   document.documentElement.lang = language;
   document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-  languageLabel.textContent = language === "ar" ? "AR" : "EN";
 
-  document.querySelectorAll("[data-i18n]").forEach((node) => {
+  if (languageLabel) {
+    languageLabel.textContent = language === "ar" ? "AR" : "EN";
+  }
+
+  nodesToTranslate.forEach((node) => {
     const key = node.dataset.i18n;
     node.textContent = language === "ar" && translations.ar[key] ? translations.ar[key] : originalText.get(node);
   });
+
+  placeholderNodes.forEach((node) => {
+    const key = node.dataset.i18nPlaceholder;
+    const translatedValue =
+      language === "ar" && translations.ar[key] ? translations.ar[key] : originalPlaceholders.get(node);
+
+    node.setAttribute("placeholder", translatedValue || "");
+  });
+
+  refreshDynamicText();
+  window.lucide?.createIcons();
 }
 
 function closeMenu() {
-  navLinks.classList.remove("is-open");
+  navLinks?.classList.remove("is-open");
   document.body.classList.remove("menu-open");
-  menuButton.setAttribute("aria-expanded", "false");
+  menuButton?.setAttribute("aria-expanded", "false");
 }
 
 function toggleMenu() {
+  if (!navLinks || !menuButton) return;
+
   const nextState = !navLinks.classList.contains("is-open");
   navLinks.classList.toggle("is-open", nextState);
   document.body.classList.toggle("menu-open", nextState);
   menuButton.setAttribute("aria-expanded", String(nextState));
 }
 
-function setFlowStep(step) {
-  guidedSteps.forEach((item) => {
-    item.classList.toggle("is-active", item.dataset.flowStep === String(step));
-  });
-}
-
-function revealContactStep() {
-  form.classList.add("has-file");
-  fileDrop?.classList.add("is-selected");
-  contactFields.hidden = false;
-  analysisStatus.hidden = false;
-  setFlowStep(2);
-  submitButtonLabel.textContent = "Send report on WhatsApp";
-  window.setTimeout(() => {
-    form.querySelector('input[name="whatsapp"]')?.focus();
-  }, 140);
-}
-
-function showFormMessage(type, key) {
+function showFormMessage(type, key, remember = true) {
   const defaultMessages = {
+    formNote: "No signup required. Your report is sent on WhatsApp.",
     formSuccess: "Your document has been received. WhiteGrain will review it and send your red-flag report on WhatsApp.",
     formMissingFile: "Upload a document before submitting.",
     formMissingName: "Add your name so we know who the review is for.",
     formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
+    formMissingProject: "Select the project or document type.",
     formMissingConsent: "Please confirm consent before submitting.",
-    formSending: "Preparing your request...",
-    formReady: "File selected. Add your WhatsApp number while the review is prepared."
+    formReady: "File selected. Add your WhatsApp number and choose the document type.",
+    formSending: "Preparing your request..."
   };
 
-  const message = currentLanguage === "ar" && translations.ar[key] ? translations.ar[key] : defaultMessages[key];
-  formNote.textContent = message;
+  if (remember) {
+    currentMessage = { type, key };
+  }
+
+  if (!formNote) return;
+
+  formNote.textContent = t(key, defaultMessages[key]);
   formNote.classList.remove("success", "error");
+
   if (type) {
     formNote.classList.add(type);
   }
 }
 
-languageToggle.addEventListener("click", () => {
-  applyLanguage(currentLanguage === "en" ? "ar" : "en");
-});
+function revealContactStep() {
+  if (!form || !contactFields || !analysisStatus) return;
 
-menuButton.addEventListener("click", () => {
-  toggleMenu();
-});
+  hasSelectedFile = true;
+  form.classList.add("has-file");
+  uploadZone?.classList.add("is-selected");
+  contactFields.hidden = false;
+  analysisStatus.hidden = false;
+  showFormMessage("", "formReady");
 
-brandLink.addEventListener("click", (event) => {
-  if (window.matchMedia("(max-width: 720px)").matches) {
-    event.preventDefault();
-    toggleMenu();
-  }
-});
+  window.setTimeout(() => {
+    form.querySelector('input[name="whatsapp"]')?.focus();
+  }, 180);
+}
 
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", closeMenu);
-});
+function resetUploadState() {
+  hasSelectedFile = false;
+  fileName.textContent = t("fileEmpty", "No file selected");
+  analysisStatus.hidden = true;
+  contactFields.hidden = false;
+  form.classList.remove("has-file");
+  uploadZone?.classList.remove("is-selected");
+  showFormMessage("", "formNote");
+}
 
-sampleReportButton.addEventListener("click", () => {
-  document.querySelector("#sample-report").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-fileInput.addEventListener("change", () => {
-  const file = fileInput.files?.[0];
+function handleFile(file) {
   if (!file) {
-    fileName.textContent = "No file selected";
-    analysisStatus.hidden = true;
-    contactFields.hidden = true;
-    form.classList.remove("has-file");
-    fileDrop?.classList.remove("is-selected");
-    submitButtonLabel.textContent = "Get 3 Free Red Flags";
-    setFlowStep(1);
+    resetUploadState();
     return;
   }
 
   fileName.textContent = file.name;
   revealContactStep();
-  showFormMessage("", "formReady");
+}
+
+languageToggle?.addEventListener("click", () => {
+  applyLanguage(currentLanguage === "en" ? "ar" : "en");
 });
 
-form.addEventListener("submit", (event) => {
+menuButton?.addEventListener("click", toggleMenu);
+
+brandLink?.addEventListener("click", (event) => {
+  if (navLinks && window.matchMedia("(max-width: 720px)").matches) {
+    event.preventDefault();
+    toggleMenu();
+  }
+});
+
+navLinks?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
+
+fileInput?.addEventListener("change", () => {
+  handleFile(fileInput.files?.[0]);
+});
+
+uploadZone?.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  uploadZone.classList.add("is-dragging");
+});
+
+uploadZone?.addEventListener("dragleave", () => {
+  uploadZone.classList.remove("is-dragging");
+});
+
+uploadZone?.addEventListener("drop", (event) => {
+  event.preventDefault();
+  uploadZone.classList.remove("is-dragging");
+
+  const file = event.dataTransfer?.files?.[0];
+  if (!file || !fileInput) return;
+
+  const transfer = new DataTransfer();
+  transfer.items.add(file);
+  fileInput.files = transfer.files;
+  handleFile(file);
+});
+
+form?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const data = new FormData(form);
   const file = data.get("document");
-  const name = String(data.get("name") || "").trim();
   const whatsapp = String(data.get("whatsapp") || "").trim();
+  const projectType = String(data.get("projectType") || "").trim();
   const consent = data.get("consent");
 
   if (!file || !file.name) {
     showFormMessage("error", "formMissingFile");
-    setFlowStep(1);
-    return;
-  }
-
-  if (!name) {
-    showFormMessage("error", "formMissingName");
-    form.querySelector('input[name="name"]').focus();
+    fileInput?.focus();
     return;
   }
 
   if (!whatsapp) {
     showFormMessage("error", "formMissingWhatsapp");
-    form.querySelector('input[name="whatsapp"]').focus();
+    form.querySelector('input[name="whatsapp"]')?.focus();
+    return;
+  }
+
+  if (!projectType) {
+    showFormMessage("error", "formMissingProject");
+    form.querySelector('input[name="projectType"]')?.focus();
     return;
   }
 
@@ -245,15 +358,16 @@ form.addEventListener("submit", (event) => {
 
   submitButton.classList.add("is-loading");
   submitButton.disabled = true;
+  submitButtonLabel.textContent = t("submitSending", "Sending...");
   showFormMessage("", "formSending");
 
-  // TODO: connect this form to a secure upload endpoint and WhatsApp report workflow.
+  // TODO: connect this public intake to secure storage and the WhatsApp report workflow.
   window.setTimeout(() => {
     showFormMessage("success", "formSuccess");
-    setFlowStep(3);
     submitButton.classList.remove("is-loading");
     submitButton.disabled = false;
-  }, 750);
+    submitButtonLabel.textContent = t("submitReady", "Get 3 Free Red Flags");
+  }, 850);
 });
 
 document.addEventListener("keydown", (event) => {

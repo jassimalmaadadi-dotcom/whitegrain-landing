@@ -5,29 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="WhiteGrain reviews contractor quotes, BOQs, construction contracts, repair documents, and maintenance agreements for red flags before you sign or pay."
+      content="WhiteGrain reviews contractor quotes, BOQs, repair documents, and maintenance contracts for red flags before you sign or pay."
     />
-    <title>WhiteGrain | Professional Red-Flag Review</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260629-service-desk" />
+    <title>WhiteGrain | Red-Flag Document Review</title>
+    <link rel="stylesheet" href="whitegrain-version.css?v=20260630-service-flow" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="WhiteGrain menu">
-        <img src="assets/whitegrain-oneword-logo-black.png" alt="WhiteGrain" />
+    <header class="hero-header">
+      <a class="brand" href="#top" aria-label="WhiteGrain home">
+        <img src="assets/whitegrain-icon-black.png" alt="" />
+        <span>WHITEGRAIN</span>
       </a>
-
-      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">
-        <i data-lucide="menu"></i>
-      </button>
-
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#how" data-i18n="navHow">How it works</a>
-        <a href="#review" data-i18n="navReview">What we review</a>
-        <a href="#red-flags" data-i18n="navFlags">Sample red flags</a>
-        <a href="#sample-report" data-i18n="navReport">Sample report</a>
-        <a href="#trust" data-i18n="navPrivacy">Privacy</a>
-      </nav>
 
       <div class="header-actions">
         <button class="language-toggle" type="button" aria-label="Switch language">
@@ -35,358 +24,217 @@
           <span id="languageLabel">EN</span>
         </button>
         <a class="login-link" href="/app" data-i18n="login">Login</a>
-        <a class="primary-link" href="#upload" data-i18n="primaryCta">Get 3 Free Red Flags</a>
       </div>
     </header>
 
-    <main>
-      <section class="guided-hero" id="top">
-        <div class="hero-shell">
-          <div class="hero-intro">
-            <p class="eyebrow" data-i18n="heroEyebrow">Professional Red-Flag Review</p>
-            <h1 data-i18n="heroTitle">Wait! Before You Sign</h1>
-            <h2 data-i18n="heroSubheadline">Review your contractor &amp; maintenance documents first.</h2>
-            <p data-i18n="heroText">
-              Upload your quote, BOQ, or repair/maintenance contract. WhiteGrain checks for scope gaps,
-              vague specifications, compliance issues, payment risks, logic problems, and cost red flags.
-            </p>
-
-            <div class="hero-flow-strip" aria-label="WhiteGrain review steps">
-              <span><b>1</b> Upload</span>
-              <i data-lucide="arrow-right"></i>
-              <span><b>2</b> Red-flag review</span>
-              <i data-lucide="arrow-right"></i>
-              <span><b>3</b> WhatsApp report</span>
-            </div>
-          </div>
-
-          <div class="guided-flow" id="upload">
-            <div class="review-visuals" aria-label="WhiteGrain red-flag review example">
-              <div class="animated-review-board">
-                <div class="villa-outline" aria-hidden="true">
-                  <i data-lucide="house"></i>
-                  <span></span>
-                </div>
-
-                <div class="scan-beam" aria-hidden="true"></div>
-
-                <article class="review-sheet sheet-quote">
-                  <span class="sheet-label">Contractor quote</span>
-                  <strong>Villa works</strong>
-                  <div class="sheet-lines">
-                    <span></span>
-                    <span></span>
-                    <span class="is-risk"></span>
-                  </div>
-                  <b class="sheet-total">QAR</b>
-                </article>
-
-                <article class="review-sheet sheet-boq">
-                  <span class="sheet-label">BOQ</span>
-                  <strong>Tiles + AC</strong>
-                  <div class="sheet-grid">
-                    <span></span><span></span><span></span>
-                    <span></span><span class="is-risk"></span><span></span>
-                    <span></span><span></span><span></span>
-                  </div>
-                </article>
-
-                <article class="review-sheet sheet-contract">
-                  <span class="sheet-label">Maintenance contract</span>
-                  <strong>Scope + response</strong>
-                  <div class="sheet-lines">
-                    <span></span>
-                    <span class="is-risk"></span>
-                    <span></span>
-                  </div>
-                </article>
-
-                <div class="construction-icons" aria-hidden="true">
-                  <span><i data-lucide="wind"></i></span>
-                  <span><i data-lucide="droplets"></i></span>
-                  <span><i data-lucide="plug-zap"></i></span>
-                  <span><i data-lucide="layers"></i></span>
-                </div>
-
-                <div class="red-pin pin-tiles">
-                  <i data-lucide="alert-triangle"></i>
-                  <span>Tile allowance missing</span>
-                </div>
-                <div class="red-pin pin-payment">
-                  <i data-lucide="alert-triangle"></i>
-                  <span>Payment stage unclear</span>
-                </div>
-                <div class="red-pin pin-scope">
-                  <i data-lucide="alert-triangle"></i>
-                  <span>Scope gap</span>
-                </div>
-
-                <div class="whatsapp-preview">
-                  <i data-lucide="message-circle"></i>
-                  <div>
-                    <span>WhatsApp report</span>
-                    <strong>3 red flags ready</strong>
-                    <p>Clear questions before signing.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <aside class="guided-panel" aria-labelledby="uploadTitle">
-            <form class="red-flag-form guided-form" id="redFlagForm">
-              <div class="panel-head simple-panel-head">
-                <span class="icon-badge"><i data-lucide="file-warning"></i></span>
-                <div>
-                  <p class="eyebrow" data-i18n="uploadEyebrow">No account required</p>
-                  <h2 id="uploadTitle">Start here</h2>
-                  <p>Upload first. Then add WhatsApp so we know where to send the report.</p>
-                </div>
-              </div>
-
-              <label class="simple-field select-field">
-                <span class="big-step">1</span>
-                <span class="field-copy">
-                  <strong>What are you checking?</strong>
-                  <small>Choose the closest option.</small>
-                </span>
-                <select name="projectType" required>
-                  <option value="" data-i18n="selectProject">Select project type</option>
-                  <option value="villa-construction" data-i18n="projectVilla">Villa construction</option>
-                  <option value="villa-renovation" data-i18n="projectRenovation">Villa renovation</option>
-                  <option value="maintenance-repair" data-i18n="projectMaintenance">Maintenance / repair work</option>
-                  <option value="fit-out" data-i18n="projectFitout">Fit-out</option>
-                  <option value="other" data-i18n="projectOther">Other</option>
-                </select>
-              </label>
-
-              <label class="file-drop">
-                <input
-                  type="file"
-                  name="document"
-                  accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
-                  required
-                />
-                <span class="big-step">2</span>
-                <span class="file-drop-icon"><i data-lucide="upload-cloud"></i></span>
-                <span class="file-drop-copy">
-                  <strong>Upload document</strong>
-                  <small data-i18n="fileTypes">PDF, Word, Excel, or clear photos.</small>
-                  <b class="file-name" id="fileName">No file selected</b>
-                </span>
-              </label>
-
-              <div class="analysis-status" id="analysisStatus" hidden>
-                <div class="progress-line"><span></span></div>
-                <p>Review started. Add WhatsApp while WhiteGrain prepares the red-flag report.</p>
-              </div>
-
-              <div class="contact-fields" id="contactFields" hidden>
-                <label class="simple-field phone-field">
-                  <span class="big-step">3</span>
-                  <span class="field-copy">
-                    <strong>Where should we send it?</strong>
-                    <small>Add the WhatsApp number for the report.</small>
-                  </span>
-                  <input type="tel" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="+974 55 123 456" required />
-                </label>
-
-                <label class="simple-field name-field">
-                  <span class="field-copy">
-                    <strong>Your name</strong>
-                    <small>So we know who the review is for.</small>
-                  </span>
-                  <input type="text" name="name" autocomplete="name" required />
-                </label>
-
-                <label class="worry-field">
-                  <span data-i18n="worryLabel">What are you worried about? <em data-i18n="optional">(optional)</em></span>
-                  <textarea name="note" rows="3"></textarea>
-                </label>
-
-                <label class="consent-row">
-                  <input type="checkbox" name="consent" required />
-                  <span data-i18n="consentText">
-                    I agree that WhiteGrain can use this document only to prepare my review and contact me on WhatsApp.
-                  </span>
-                </label>
-
-                <button class="button button-primary form-submit" type="submit">
-                  <i data-lucide="shield-check"></i>
-                  <span>Send my review</span>
-                </button>
-
-                <p class="form-note" id="formNote">
-                  Upload first. WhatsApp details appear after the file is selected.
-                </p>
-              </div>
-            </form>
-
-            <div class="panel-explainer">
-              <h3>What we check</h3>
-              <ul>
-                <li>Missing or vague scope</li>
-                <li>Weak specifications</li>
-                <li>Payment risks</li>
-                <li>Cost red flags</li>
-                <li>Questions to ask before signing</li>
-              </ul>
-            </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="document-visual" aria-label="Document types WhiteGrain reviews">
-        <div class="doc-card quote">
-          <p>CONTRACTOR QUOTE</p>
-          <strong>External works</strong>
-          <span>Provisional sum - not detailed</span>
-        </div>
-        <div class="doc-card blueprint">
-          <p>VILLA BLUEPRINT</p>
-          <strong>AC + lighting coordination</strong>
-          <span>Confirm before approval</span>
-        </div>
-        <div class="doc-card boq">
-          <p>BOQ SUMMARY</p>
-          <strong>Tiles 60x60</strong>
-          <span>No allowance or origin listed</span>
-        </div>
-        <div class="doc-card maintenance">
-          <p>MAINTENANCE CONTRACT</p>
-          <strong>Emergency call-out</strong>
-          <span>Response time not defined</span>
-        </div>
-      </section>
-
-      <section class="section" id="how">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="howEyebrow">Simple process</p>
-          <h2 data-i18n="howTitle">How WhiteGrain Works</h2>
-        </div>
-        <div class="steps-grid">
-          <article>
-            <span class="step-number">01</span>
-            <i data-lucide="upload-cloud"></i>
-            <h3 data-i18n="step1Title">Upload</h3>
-            <p data-i18n="step1Text">Upload your quote, BOQ, contract, or repair/maintenance document.</p>
-          </article>
-          <article>
-            <span class="step-number">02</span>
-            <i data-lucide="scan-search"></i>
-            <h3 data-i18n="step2Title">Red-Flag Review</h3>
-            <p data-i18n="step2Text">
-              WhiteGrain reviews the document for missing details, unclear scope, weak specifications,
-              compliance concerns, payment risks, and cost reasonableness.
-            </p>
-          </article>
-          <article>
-            <span class="step-number">03</span>
-            <i data-lucide="message-square-text"></i>
-            <h3 data-i18n="step3Title">WhatsApp Report</h3>
-            <p data-i18n="step3Text">
-              Receive a simple report with red flags, recommendations, and questions to ask before signing.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section review-section" id="review">
-        <div class="section-heading compact">
-          <p class="eyebrow" data-i18n="reviewEyebrow">Specialized document review</p>
-          <h2 data-i18n="reviewTitle">What WhiteGrain Reviews</h2>
-          <p data-i18n="reviewText">
-            Built for Qatar homeowners reviewing construction, repair, fit-out, and maintenance documents.
+    <main id="top">
+      <section class="hero-screen" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="heroEyebrow">Professional red-flag review</p>
+          <h1 id="heroTitle" class="headline">
+            <span data-i18n="heroWait">Wait!</span>
+            <strong data-i18n="heroBefore">Before You Sign</strong>
+          </h1>
+          <p class="hero-subtitle">
+            <span data-i18n="heroSubLine1">Upload your contractor, BOQ, or repair/maintenance document.</span>
+            <span>
+              <span data-i18n="heroSubLine2">We review it and send your report on</span>
+              <strong data-i18n="whatsappWord">WhatsApp</strong>.
+            </span>
           </p>
         </div>
 
-        <div class="review-grid">
-          <article><i data-lucide="list-checks"></i><h3 data-i18n="scopeGaps">Scope gaps</h3></article>
-          <article><i data-lucide="ruler"></i><h3 data-i18n="specifications">Specifications</h3></article>
-          <article><i data-lucide="badge-check"></i><h3 data-i18n="compliance">Compliance</h3></article>
-          <article><i data-lucide="git-compare-arrows"></i><h3 data-i18n="logicCheck">Logic check</h3></article>
-          <article><i data-lucide="wallet-cards"></i><h3 data-i18n="paymentRisk">Payment risk</h3></article>
-          <article><i data-lucide="calculator"></i><h3 data-i18n="costReasonableness">Cost reasonableness</h3></article>
-        </div>
-      </section>
+        <div class="review-visual" aria-label="WhiteGrain review example">
+          <div class="doc-row" aria-hidden="true">
+            <article class="mini-doc quote-doc">
+              <b data-i18n="visualQuote">Contractor Quote</b>
+              <span></span>
+              <span></span>
+              <em><i data-lucide="triangle-alert"></i></em>
+            </article>
+            <article class="mini-doc boq-doc">
+              <b>BOQ</b>
+              <span></span>
+              <span></span>
+              <em><i data-lucide="triangle-alert"></i></em>
+            </article>
+            <article class="mini-doc repair-doc">
+              <b data-i18n="visualRepair">Repair / Maintenance Contract</b>
+              <span></span>
+              <span></span>
+              <em><i data-lucide="triangle-alert"></i></em>
+            </article>
+          </div>
 
-      <section class="section split-section" id="red-flags">
-        <div class="section-heading sticky-copy">
-          <p class="eyebrow" data-i18n="flagsEyebrow">Before you sign</p>
-          <h2 data-i18n="flagsTitle">Sample Red Flags</h2>
-          <p data-i18n="flagsText">
-            The review highlights practical issues that can become cost, quality, or payment problems later.
-          </p>
-          <a class="button button-primary" href="#upload">
+          <div class="villa-sketch" aria-hidden="true">
+            <div class="roof"></div>
+            <div class="villa-body">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div class="lens-card" aria-hidden="true">
+            <i data-lucide="search"></i>
+            <span><i data-lucide="flag"></i></span>
+          </div>
+
+          <aside class="whatsapp-card" aria-label="Sample WhatsApp report">
+            <span class="wa-badge" aria-hidden="true"></span>
+            <div class="whatsapp-top">
+              <span>WhiteGrain Report</span>
+            </div>
+            <ul>
+              <li><b>3</b> <span data-i18n="waFlags">Red Flags Found</span></li>
+              <li data-i18n="waCosts">Cost risks</li>
+              <li data-i18n="waMissing">Missing items</li>
+              <li data-i18n="waTerms">Unclear terms</li>
+            </ul>
+          </aside>
+        </div>
+
+        <ol class="step-strip" aria-label="WhiteGrain service steps">
+          <li>
+            <b>1</b>
             <i data-lucide="upload-cloud"></i>
-            <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
-          </a>
-        </div>
+            <span data-i18n="flow1">Upload</span>
+          </li>
+          <li>
+            <b>2</b>
+            <i data-lucide="search"></i>
+            <span data-i18n="flow2">Review</span>
+          </li>
+          <li>
+            <b>3</b>
+            <span class="inline-whatsapp-logo step-whatsapp-logo" aria-hidden="true"></span>
+            <span data-i18n="flow3">WhatsApp Report</span>
+          </li>
+        </ol>
 
-        <div class="red-flag-list">
-          <article>
-            <i data-lucide="layers"></i>
-            <p data-i18n="flagTiles">"Tiles included" but no brand, size, origin, or allowance.</p>
-          </article>
-          <article>
-            <i data-lucide="wind"></i>
-            <p data-i18n="flagAc">AC listed as lump sum without brand, tonnage, insulation, testing, or commissioning.</p>
-          </article>
-          <article>
-            <i data-lucide="droplets"></i>
-            <p data-i18n="flagWaterproof">Waterproofing mentioned without system type, warranty, or test method.</p>
-          </article>
-          <article>
-            <i data-lucide="calendar-check"></i>
-            <p data-i18n="flagPayment">Payment milestones not tied to measurable completed work.</p>
-          </article>
-          <article>
-            <i data-lucide="file-x-2"></i>
-            <p data-i18n="flagExclusions">Exclusions that may become variation claims.</p>
-          </article>
-        </div>
-      </section>
+        <form class="quick-intake" id="redFlagForm" novalidate>
+          <label class="upload-zone" id="upload">
+            <input
+              type="file"
+              name="document"
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.webp"
+              required
+            />
+            <span class="upload-icon"><i data-lucide="upload-cloud"></i></span>
+            <span class="upload-copy">
+              <strong data-i18n="uploadTitle">Tap to upload document</strong>
+              <small data-i18n="uploadHint">PDF, JPG, PNG, Word, Excel up to 25MB</small>
+              <b class="file-name" id="fileName" data-i18n="fileEmpty">No file selected</b>
+            </span>
+          </label>
 
-      <section class="section sample-report" id="sample-report">
-        <div class="report-preview">
-          <div class="report-toolbar">
-            <span data-i18n="sampleReportLabel">Sample report preview</span>
-            <button type="button" class="small-button" id="sampleReportButton">
-              <i data-lucide="eye"></i>
-              <span data-i18n="secondaryCta">See Sample Report</span>
+          <div class="scan-status" id="analysisStatus" hidden>
+            <div class="scan-bar"><span></span></div>
+            <p data-i18n="scanStatus">File selected. Add WhatsApp and get your red flags.</p>
+          </div>
+
+          <div class="contact-fields" id="contactFields">
+            <label class="whatsapp-input">
+              <span class="whatsapp-mark" aria-hidden="true"></span>
+              <span class="country-code">+974</span>
+              <input
+                type="tel"
+                name="whatsapp"
+                autocomplete="tel"
+                inputmode="tel"
+                placeholder="Your WhatsApp number"
+                data-i18n-placeholder="whatsappPlaceholder"
+                required
+              />
+            </label>
+
+            <div class="project-pills" role="radiogroup" aria-label="Project type">
+              <label>
+                <input type="radio" name="projectType" value="villa-construction" required />
+                <i data-lucide="home"></i>
+                <span data-i18n="projectVillaShort">Villa</span>
+              </label>
+              <label>
+                <input type="radio" name="projectType" value="villa-renovation" />
+                <i data-lucide="paint-roller"></i>
+                <span data-i18n="projectRenovationShort">Renovation</span>
+              </label>
+              <label>
+                <input type="radio" name="projectType" value="maintenance-repair" />
+                <i data-lucide="wrench"></i>
+                <span data-i18n="projectMaintenanceShort">Maintenance / Repair</span>
+              </label>
+            </div>
+
+            <label class="name-field">
+              <span data-i18n="nameLabel">Name</span>
+              <input type="text" name="name" autocomplete="name" data-i18n-placeholder="namePlaceholder" placeholder="Optional" />
+            </label>
+
+            <label class="consent-row">
+              <input type="checkbox" name="consent" required />
+              <span data-i18n="consentText">Use this document only to prepare my review and contact me on WhatsApp.</span>
+            </label>
+
+            <button class="submit-button" type="submit">
+              <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
+              <i data-lucide="arrow-right"></i>
             </button>
           </div>
-          <div class="report-body">
-            <div class="report-score">
-              <strong>3</strong>
-              <span data-i18n="freeFlags">free red flags</span>
-            </div>
-            <div class="report-items">
-              <p><b data-i18n="reportItem1Title">Scope gap</b><span data-i18n="reportItem1Text">Maintenance exclusions need clarification.</span></p>
-              <p><b data-i18n="reportItem2Title">Payment risk</b><span data-i18n="reportItem2Text">Advance payment is not tied to a completed milestone.</span></p>
-              <p><b data-i18n="reportItem3Title">Questions to ask</b><span data-i18n="reportItem3Text">Confirm warranty, testing, exclusions, and response time.</span></p>
-            </div>
-          </div>
+
+          <p class="form-note" id="formNote" data-i18n="formNote">
+            No signup required. Your report is sent on WhatsApp.
+          </p>
+        </form>
+
+          <div class="trust-row" aria-label="WhiteGrain trust points">
+          <span><i data-lucide="shield-check"></i><b data-i18n="trustNoSignup">No signup required</b></span>
+          <span><span class="inline-whatsapp-logo trust-whatsapp-logo" aria-hidden="true"></span><b data-i18n="trustWhatsapp">Report sent on WhatsApp</b></span>
+        </div>
+
+        <div class="feature-strip" aria-label="WhiteGrain service qualities">
+          <span><i data-lucide="lock-keyhole"></i><b data-i18n="trustPrivateTitle">Private upload</b></span>
+          <span><i data-lucide="circle-check"></i><b data-i18n="easyUnderstand">Easy to understand</b></span>
+          <span><i data-lucide="file-check-2"></i><b data-i18n="builtForDocs">Built for contractor and maintenance documents</b></span>
         </div>
       </section>
 
-      <section class="section trust-section" id="trust">
-        <div class="trust-card">
+      <section class="info-grid" id="checks">
+        <article>
           <i data-lucide="lock-keyhole"></i>
-          <h2 data-i18n="trustTitle">Private by design</h2>
-          <ul>
-            <li data-i18n="trust1">Your documents are used only to prepare your review.</li>
-            <li data-i18n="trust2">We do not share your documents with contractors.</li>
-            <li data-i18n="trust3">This is a professional red-flag review, not legal advice.</li>
-          </ul>
-        </div>
-        <div class="final-cta">
-          <p class="eyebrow" data-i18n="finalEyebrow">Ready before signing</p>
-          <h2 data-i18n="finalTitle">Send the document first. Decide after the red flags are clear.</h2>
-          <a class="button button-primary" href="#upload">
-            <i data-lucide="upload-cloud"></i>
-            <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
-          </a>
+          <h2 data-i18n="trustPrivateTitle">Private upload</h2>
+          <p data-i18n="trust1">Your documents are used only to prepare your review.</p>
+        </article>
+        <article>
+          <i data-lucide="list-checks"></i>
+          <h2 data-i18n="reviewTitle">Built for contractor and maintenance documents</h2>
+          <p data-i18n="reviewText">
+            WhiteGrain looks for scope gaps, vague specs, missing items, payment risks, compliance questions, and cost red flags.
+          </p>
+        </article>
+        <article>
+          <i data-lucide="message-square-text"></i>
+          <h2 data-i18n="reportTitle">Easy to understand</h2>
+          <p data-i18n="reportText">You receive red flags, what they mean, and what to ask before signing or paying.</p>
+        </article>
+      </section>
+
+      <section class="example-section" id="examples">
+        <p class="eyebrow" data-i18n="flagsEyebrow">Examples</p>
+        <h2 data-i18n="flagsTitle">Common red flags WhiteGrain can catch</h2>
+        <div class="example-list">
+          <article>
+            <b data-i18n="flagTilesTitle">Tiles included</b>
+            <p data-i18n="flagTiles">No brand, size, origin, allowance, or credit rule if you choose cheaper tiles.</p>
+          </article>
+          <article>
+            <b data-i18n="flagAcTitle">AC lump sum</b>
+            <p data-i18n="flagAc">No brand, tonnage, duct insulation, testing, commissioning, or warranty detail.</p>
+          </article>
+          <article>
+            <b data-i18n="flagPaymentTitle">Payment stage</b>
+            <p data-i18n="flagPayment">Payment is requested before clear measurable work is completed or approved.</p>
+          </article>
         </div>
       </section>
     </main>
@@ -394,9 +242,8 @@
     <footer class="site-footer">
       <span>WhiteGrain</span>
       <a href="/app" data-i18n="login">Login</a>
-      <a href="#trust" data-i18n="navPrivacy">Privacy</a>
     </footer>
 
-    <script src="whitegrain-version.js?v=20260629-service-desk"></script>
+    <script src="whitegrain-version.js?v=20260630-service-flow"></script>
   </body>
 </html>

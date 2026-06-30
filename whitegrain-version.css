@@ -722,7 +722,7 @@ textarea {
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   padding: 0 10px;
   border: 1px solid #d5dde7;
   border-radius: 13px;
@@ -741,8 +741,11 @@ textarea {
 }
 
 .project-pills svg {
-  width: 19px;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
   color: var(--navy);
+  stroke-width: 2.45;
 }
 
 .project-pills label:has(input:checked) {
@@ -1494,8 +1497,8 @@ html[dir="rtl"] .sample-card::after {
 
   .project-pills label {
     min-height: 42px;
-    gap: 8px;
-    justify-content: flex-start;
+    gap: 7px;
+    justify-content: center;
     border-radius: 12px;
     padding: 0 14px;
     font-size: 0.86rem;
@@ -1503,7 +1506,8 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .project-pills svg {
-    width: 18px;
+    width: 24px;
+    height: 24px;
     flex: 0 0 auto;
   }
 

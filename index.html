@@ -8,7 +8,7 @@
       content="WhiteGrain reviews contractor quotes, BOQs, repair documents, and maintenance contracts for red flags before you sign or pay."
     />
     <title>WhiteGrain | Red-Flag Document Review</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260630-service-flow" />
+    <link rel="stylesheet" href="whitegrain-version.css?v=20260630-audit-polish" />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
   </head>
   <body>
@@ -133,6 +133,10 @@
             <p data-i18n="scanStatus">File selected. Add WhatsApp and get your red flags.</p>
           </div>
 
+          <p class="form-note" id="formNote" data-i18n="formNote">
+            No signup required. Your report is sent on WhatsApp.
+          </p>
+
           <div class="contact-fields" id="contactFields">
             <label class="whatsapp-input">
               <span class="whatsapp-mark" aria-hidden="true"></span>
@@ -181,10 +185,6 @@
               <i data-lucide="arrow-right"></i>
             </button>
           </div>
-
-          <p class="form-note" id="formNote" data-i18n="formNote">
-            No signup required. Your report is sent on WhatsApp.
-          </p>
         </form>
 
           <div class="trust-row" aria-label="WhiteGrain trust points">
@@ -196,6 +196,23 @@
           <span><i data-lucide="lock-keyhole"></i><b data-i18n="trustPrivateTitle">Private upload</b></span>
           <span><i data-lucide="circle-check"></i><b data-i18n="easyUnderstand">Easy to understand</b></span>
           <span><i data-lucide="file-check-2"></i><b data-i18n="builtForDocs">Built for contractor and maintenance documents</b></span>
+        </div>
+      </section>
+
+      <section class="sample-report" aria-labelledby="sampleReportTitle">
+        <div>
+          <p class="eyebrow" data-i18n="sampleEyebrow">Sample output</p>
+          <h2 id="sampleReportTitle" data-i18n="sampleTitle">What your WhatsApp report looks like</h2>
+          <p data-i18n="sampleText">
+            A short, practical red-flag summary: what the document says, why it matters, and what to ask before signing.
+          </p>
+        </div>
+        <div class="sample-card" aria-label="Sample red flag">
+          <span class="sample-label" data-i18n="sampleFlagLabel">Red flag</span>
+          <h3 data-i18n="sampleFlagTitle">AC listed as a lump sum</h3>
+          <p data-i18n="sampleFlagText">
+            Ask for brand, tonnage, duct insulation, testing, commissioning, and warranty before approval.
+          </p>
         </div>
       </section>
 
@@ -244,6 +261,6 @@
       <a href="/app" data-i18n="login">Login</a>
     </footer>
 
-    <script src="whitegrain-version.js?v=20260630-service-flow"></script>
+    <script src="whitegrain-version.js?v=20260630-audit-polish"></script>
   </body>
 </html>

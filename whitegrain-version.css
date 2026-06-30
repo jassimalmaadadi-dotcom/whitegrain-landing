@@ -190,8 +190,12 @@ textarea {
   font-weight: 800;
 }
 
-.hero-subtitle span {
+.hero-subtitle > span {
   display: block;
+}
+
+.hero-subtitle > span > span {
+  display: inline;
 }
 
 .hero-subtitle strong {
@@ -1231,12 +1235,16 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .hero-subtitle {
-    max-width: 360px;
+    max-width: 100%;
     margin: 3px auto 0;
-    font-size: 0.82rem;
+    font-size: clamp(0.72rem, 2.85vw, 0.82rem);
     font-weight: 720;
-    line-height: 1.28;
+    line-height: 1.22;
     text-align: center;
+  }
+
+  html:not([dir="rtl"]) .hero-subtitle > span {
+    white-space: nowrap;
   }
 
   .local-proof {
@@ -1651,7 +1659,7 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .hero-subtitle {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
   }
 
   .review-visual {
@@ -1702,9 +1710,9 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .hero-subtitle {
-    max-width: 330px;
+    max-width: 100%;
     margin-top: 2px;
-    font-size: 0.72rem;
+    font-size: clamp(0.66rem, 2.75vw, 0.72rem);
     line-height: 1.16;
   }
 

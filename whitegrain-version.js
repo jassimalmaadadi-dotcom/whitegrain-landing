@@ -1,5 +1,10 @@
 ﻿const PUBLIC_REVIEW_ENDPOINT = "https://kfhhbetspgcvbkkvlwtg.functions.supabase.co/public-review-intake";
 const MAX_UPLOAD_FILES = 8;
+const MAX_UPLOAD_FILE_BYTES = 25 * 1024 * 1024;
+const MAX_IMAGE_UPLOAD_BYTES = 1.6 * 1024 * 1024;
+const MAX_IMAGE_DIMENSION = 1800;
+const IMAGE_UPLOAD_QUALITY = 0.78;
+const COMPRESSIBLE_IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 
 const translations = {
   ar: {
@@ -61,10 +66,13 @@ const translations = {
     formReady: "تم اختيار الملفات. أضف رقم الواتساب واختر نوع المستند.",
     formSuccess: "تم الاستلام!|سيبدأ خبراء WhiteGrain بمراجعة ملفاتك ورفع الملاحظات المهمة الآن.|سيصلك التقرير على واتساب قريباً.",
     formSending: "جاري رفع الملفات...",
+    formPreparing: "جاري تجهيز الصور للرفع...",
     formReading: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formChecking: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formAlmostDone: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formTimeout: "استغرق الإرسال وقتاً أطول من المتوقع. الرجاء المحاولة مرة أخرى.",
+    formUploadInterrupted: "تعذر تأكيد استلام الملفات. الرجاء المحاولة مرة أخرى.",
+    formNonJsonError: "تعذر تأكيد استلام الملفات. الرجاء المحاولة مرة أخرى.",
     formMissingFile: "ارفع ملفاً واحداً على الأقل قبل إرسال الطلب.",
     formMissingName: "أضف اسمك حتى نعرف لمن تكون المراجعة.",
     formMissingWhatsapp: "أضف رقم الواتساب حتى نرسل التقرير.",
@@ -250,10 +258,13 @@ function showFormMessage(type, key, remember = true) {
     formSubmitFailed: "Something went wrong. Please try again.",
     formReady: "Files selected. Add your WhatsApp number and choose the document type.",
     formSending: "Uploading your files...",
+    formPreparing: "Preparing large images...",
     formReading: "Still uploading files. Please keep this page open.",
     formChecking: "Still uploading files. Please keep this page open.",
     formAlmostDone: "Still uploading files. Please keep this page open.",
-    formTimeout: "This is taking longer than expected. Please try again."
+    formTimeout: "This is taking longer than expected. Please try again.",
+    formUploadInterrupted: "WhiteGrain could not confirm the upload. Please try again.",
+    formNonJsonError: "WhiteGrain could not confirm the upload. Please try again."
   };
 
   if (remember) {
@@ -322,6 +333,103 @@ function startSubmitProgress() {
     }, stage.delay);
     submitProgressTimers.push(timer);
   });
+}
+
+function isCompressibleImage(file) {
+  return COMPRESSIBLE_IMAGE_TYPES.has(file.type);
+}
+
+function loadImageFromFile(file) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    const url = URL.createObjectURL(file);
+
+    image.onload = () => {
+      URL.revokeObjectURL(url);
+      resolve(image);
+    };
+
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Image could not be prepared for upload."));
+    };
+
+    image.src = url;
+  });
+}
+
+function canvasToBlob(canvas, type, quality) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => {
+      if (blob) {
+        resolve(blob);
+      } else {
+        reject(new Error("Image could not be prepared for upload."));
+      }
+    }, type, quality);
+  });
+}
+
+async function compressImageForUpload(file) {
+  if (!isCompressibleImage(file) || file.size <= MAX_IMAGE_UPLOAD_BYTES) {
+    return file;
+  }
+
+  const image = await loadImageFromFile(file);
+  const sourceWidth = image.naturalWidth || image.width;
+  const sourceHeight = image.naturalHeight || image.height;
+  const longestSide = Math.max(sourceWidth, sourceHeight);
+  const scale = longestSide > MAX_IMAGE_DIMENSION ? MAX_IMAGE_DIMENSION / longestSide : 1;
+  const width = Math.max(1, Math.round(sourceWidth * scale));
+  const height = Math.max(1, Math.round(sourceHeight * scale));
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+
+  if (!context) {
+    return file;
+  }
+
+  canvas.width = width;
+  canvas.height = height;
+  context.fillStyle = "#ffffff";
+  context.fillRect(0, 0, width, height);
+  context.drawImage(image, 0, 0, width, height);
+
+  const blob = await canvasToBlob(canvas, "image/jpeg", IMAGE_UPLOAD_QUALITY);
+  if (blob.size >= file.size) {
+    return file;
+  }
+
+  const baseName = file.name.replace(/\.(jpe?g|png|webp)$/i, "") || "document";
+  return new File([blob], `${baseName}.jpg`, {
+    type: "image/jpeg",
+    lastModified: file.lastModified,
+  });
+}
+
+function prepareFilesForUpload(files) {
+  return Promise.all(Array.from(files).map((file) => compressImageForUpload(file)));
+}
+
+async function readEndpointResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+
+  if (contentType.includes("application/json")) {
+    try {
+      return await response.json();
+    } catch (_error) {
+      throw new Error(t("formNonJsonError", "WhiteGrain could not confirm the upload. Please try again."));
+    }
+  }
+
+  const text = await response.text().catch(() => "");
+  const cleanText = text.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+
+  if (cleanText && cleanText.length < 160) {
+    throw new Error(cleanText);
+  }
+
+  throw new Error(t("formNonJsonError", "WhiteGrain could not confirm the upload. Please try again."));
 }
 
 function revealContactStep() {
@@ -450,25 +558,51 @@ form?.addEventListener("submit", async (event) => {
 
   submitButton.classList.add("is-loading");
   submitButton.disabled = true;
-  submitButtonLabel.textContent = t("formSending", "Uploading files...");
-  showFormMessage("", "formSending");
+  submitButtonLabel.textContent = t("formPreparing", "Preparing large images...");
+  showFormMessage("", "formPreparing");
   startSubmitProgress();
 
+  let uploadFiles;
+  try {
+    uploadFiles = await prepareFilesForUpload(files);
+  } catch (_error) {
+    uploadFiles = Array.from(files);
+  }
+
+  const oversizedFile = uploadFiles.find((file) => file.size > MAX_UPLOAD_FILE_BYTES);
+  if (oversizedFile) {
+    showDirectFormMessage(
+      "error",
+      currentLanguage === "ar"
+        ? `${oversizedFile.name} أكبر من 25MB. الرجاء رفع ملف أصغر.`
+        : `${oversizedFile.name} is larger than 25MB. Please upload a smaller file.`
+    );
+    clearSubmitProgress();
+    submitButton.classList.remove("is-loading");
+    submitButton.disabled = false;
+    submitButtonLabel.textContent = t("submitReady", "Get 3 Free Red Flags");
+    return;
+  }
+
+  data.delete("document");
+  uploadFiles.forEach((file) => data.append("document", file, file.name));
   data.set("language", currentLanguage);
   data.set("pageUrl", window.location.href);
   data.set("userAgent", window.navigator.userAgent);
 
   const controller = new AbortController();
-  const timeoutId = window.setTimeout(() => controller.abort(), 90000);
+  const timeoutId = window.setTimeout(() => controller.abort(), 180000);
 
   try {
+    submitButtonLabel.textContent = t("formSending", "Uploading files...");
+    showFormMessage("", "formSending");
     const response = await fetch(PUBLIC_REVIEW_ENDPOINT, {
       method: "POST",
       headers: { Accept: "application/json" },
       body: data,
       signal: controller.signal,
     });
-    const result = await response.json().catch(() => ({}));
+    const result = await readEndpointResponse(response);
 
     if (!response.ok) {
       throw new Error(result.error || t("formSubmitFailed", "Something went wrong. Please try again."));

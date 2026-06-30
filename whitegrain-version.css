@@ -1250,20 +1250,20 @@ html[dir="rtl"] .sample-card::after {
   .local-proof {
     display: flex;
     width: fit-content;
-    margin: 8px auto 0;
-    padding: 5px 12px 5px 6px;
-    gap: 8px;
-    font-size: 0.82rem;
+    margin: 6px auto 0;
+    padding: 4px 11px 4px 6px;
+    gap: 7px;
+    font-size: 0.78rem;
     box-shadow: none;
   }
 
   .local-proof img {
-    width: 34px;
-    height: 34px;
+    width: 31px;
+    height: 31px;
   }
 
   .review-visual {
-    min-height: 182px;
+    min-height: 166px;
     border-radius: 18px;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(235, 244, 252, 0.7)),
@@ -1402,13 +1402,13 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .quick-intake {
-    gap: 8px;
+    gap: 7px;
     border-radius: 20px;
-    padding: 9px;
+    padding: 8px;
   }
 
   .upload-zone {
-    min-height: 86px;
+    min-height: 78px;
     grid-template-columns: 1fr;
     gap: 5px;
     border-radius: 16px;
@@ -1462,7 +1462,7 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .quick-intake.has-file .upload-zone {
-    min-height: 78px;
+    min-height: 72px;
   }
 
   .quick-intake.has-file .file-name {
@@ -1499,23 +1499,25 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .project-pills {
-    grid-template-columns: 1fr;
-    gap: 7px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .project-pills label {
-    min-height: 42px;
-    gap: 7px;
+    min-height: 56px;
+    flex-direction: column;
+    gap: 3px;
     justify-content: center;
     border-radius: 12px;
-    padding: 0 14px;
-    font-size: 0.86rem;
-    line-height: 1.12;
+    padding: 5px 3px;
+    font-size: 0.62rem;
+    line-height: 1.04;
+    text-align: center;
   }
 
   .project-pills svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     flex: 0 0 auto;
   }
 
@@ -1717,7 +1719,7 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .review-visual {
-    min-height: 138px;
+    min-height: 120px;
   }
 
   .doc-row {
@@ -1816,13 +1818,13 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .quick-intake {
-    gap: 6px;
-    padding: 7px;
+    gap: 5px;
+    padding: 6px;
   }
 
   .upload-zone {
-    min-height: 70px;
-    padding: 8px;
+    min-height: 62px;
+    padding: 7px;
   }
 
   .upload-icon {
@@ -1860,12 +1862,19 @@ html[dir="rtl"] .sample-card::after {
   }
 
   .project-pills label {
-    min-height: 38px;
-    font-size: 0.78rem;
+    min-height: 48px;
+    padding: 4px 2px;
+    font-size: 0.54rem;
+    line-height: 1.02;
+  }
+
+  .project-pills svg {
+    width: 20px;
+    height: 20px;
   }
 
   .submit-button {
-    min-height: 50px;
+    min-height: 48px;
     font-size: 1rem;
   }
 

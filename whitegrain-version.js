@@ -58,11 +58,11 @@ const translations = {
     submitSending: "جاري المراجعة...",
     formNote: "لا تحتاج إلى تسجيل حساب. سيتم إرسال التقرير على واتساب.",
     formReady: "تم اختيار الملفات. أضف رقم الواتساب واختر نوع المستند.",
-    formSuccess: "تم استلام الملفات. سيقوم WhiteGrain بمراجعتها وإرسال تقرير الملاحظات عبر واتساب.",
+    formSuccess: "تم الاستلام. سيبدأ خبراء WhiteGrain بمراجعة ملفاتك ورفع الملاحظات المهمة الآن. سيصلك التقرير على واتساب قريباً.",
     formSending: "جاري رفع الملفات...",
-    formReading: "جاري قراءة صور المستندات. قد يستغرق ذلك دقيقة.",
-    formChecking: "جاري البحث عن الملاحظات المهمة والمخاطر...",
-    formAlmostDone: "قاربنا على الانتهاء. الرجاء إبقاء الصفحة مفتوحة.",
+    formReading: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
+    formChecking: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
+    formAlmostDone: "ما زلنا نرفع الملفات. الرجاء إبقاء الصفحة مفتوحة.",
     formTimeout: "استغرق الإرسال وقتاً أطول من المتوقع. الرجاء المحاولة مرة أخرى.",
     formMissingFile: "ارفع ملفاً واحداً على الأقل قبل إرسال الطلب.",
     formMissingName: "أضف اسمك حتى نعرف لمن تكون المراجعة.",
@@ -240,7 +240,7 @@ function toggleMenu() {
 function showFormMessage(type, key, remember = true) {
   const defaultMessages = {
     formNote: "No signup required. Your report is sent on WhatsApp.",
-    formSuccess: "Your files have been received. WhiteGrain will review them and send your red-flag report on WhatsApp.",
+    formSuccess: "Received. Our experts will start reviewing your files and raising red flags now. You will get your WhatsApp report soon.",
     formMissingFile: "Upload at least one file before submitting.",
     formMissingName: "Add your name so we know who the review is for.",
     formMissingWhatsapp: "Add your WhatsApp number so we can send the report.",
@@ -249,9 +249,9 @@ function showFormMessage(type, key, remember = true) {
     formSubmitFailed: "Something went wrong. Please try again.",
     formReady: "Files selected. Add your WhatsApp number and choose the document type.",
     formSending: "Uploading your files...",
-    formReading: "Reading the document photos. This can take up to a minute.",
-    formChecking: "Checking for red flags, missing details, and payment risks...",
-    formAlmostDone: "Almost done. Please keep this page open.",
+    formReading: "Still uploading files. Please keep this page open.",
+    formChecking: "Still uploading files. Please keep this page open.",
+    formAlmostDone: "Still uploading files. Please keep this page open.",
     formTimeout: "This is taking longer than expected. Please try again."
   };
 
@@ -290,9 +290,9 @@ function startSubmitProgress() {
   clearSubmitProgress();
 
   const stages = [
-    { delay: 4500, key: "formReading", label: "Reading files..." },
-    { delay: 14000, key: "formChecking", label: "Checking red flags..." },
-    { delay: 30000, key: "formAlmostDone", label: "Almost done..." },
+    { delay: 4500, key: "formReading", label: "Still uploading..." },
+    { delay: 14000, key: "formChecking", label: "Still uploading..." },
+    { delay: 30000, key: "formAlmostDone", label: "Still uploading..." },
   ];
 
   stages.forEach((stage) => {

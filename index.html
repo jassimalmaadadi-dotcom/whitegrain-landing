@@ -1,265 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="WhiteGrain reviews contractor quotes, BOQs, repair documents, and maintenance contracts for red flags before you sign or pay."
-    />
-    <title>WhiteGrain | Red-Flag Document Review</title>
-    <link rel="stylesheet" href="whitegrain-version.css?v=20260630-local-proof-pill" />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <meta name="robots" content="noindex, nofollow" />
+    <title>WhiteGrain</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #101010;
+        --muted: #666666;
+        --line: #e7e2dc;
+        --bg: #f7f4ef;
+        --card: #ffffff;
+        --accent: #8a0f35;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100svh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(138, 15, 53, 0.08), transparent 32%),
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+        color: var(--ink);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        width: min(100% - 40px, 560px);
+        padding: 42px 34px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 24px 70px rgba(16, 16, 16, 0.08);
+        text-align: center;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 26px;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+      }
+
+      .brand img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 8vw, 4.4rem);
+        line-height: 0.94;
+        letter-spacing: -0.04em;
+      }
+
+      p {
+        margin: 18px auto 0;
+        max-width: 420px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.55;
+      }
+
+      .status {
+        display: inline-flex;
+        margin-top: 28px;
+        padding: 10px 16px;
+        border: 1px solid rgba(138, 15, 53, 0.18);
+        border-radius: 999px;
+        background: rgba(138, 15, 53, 0.07);
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 560px) {
+        main {
+          width: min(100% - 28px, 420px);
+          padding: 34px 22px;
+          border-radius: 22px;
+        }
+
+        p {
+          font-size: 0.98rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="hero-header">
-      <a class="brand" href="#top" aria-label="WhiteGrain home">
-        <img src="assets/whitegrain-icon-black.png" alt="" />
+    <main>
+      <div class="brand" aria-label="WhiteGrain">
+        <img src="/assets/whitegrain-icon-black.png" alt="" />
         <span>WHITEGRAIN</span>
-      </a>
-
-      <div class="header-actions">
-        <button class="language-toggle" type="button" aria-label="Switch language">
-          <i data-lucide="globe-2"></i>
-          <span id="languageLabel">EN</span>
-        </button>
       </div>
-    </header>
-
-    <main id="top">
-      <section class="hero-screen" aria-labelledby="heroTitle">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="heroEyebrow">Professional red-flag review</p>
-          <h1 id="heroTitle" class="headline">
-            <span data-i18n="heroWait">Wait!</span>
-            <strong data-i18n="heroBefore">Before You Sign</strong>
-          </h1>
-          <p class="hero-subtitle">
-            <span data-i18n="heroSubLine1">Upload your contractor, BOQ, or repair/maintenance document.</span>
-            <span>
-              <span data-i18n="heroSubLine2">We review it and send your report on</span>
-              <strong data-i18n="whatsappWord">WhatsApp</strong>.
-            </span>
-          </p>
-          <div class="local-proof" aria-label="Made in Qatar">
-            <img src="assets/made-in-qatar-seal-large.jpg" alt="" />
-            <span data-i18n="madeInQatar">Made in Qatar</span>
-          </div>
-        </div>
-
-        <div class="review-visual" aria-label="WhiteGrain review example">
-          <div class="doc-row" aria-hidden="true">
-            <article class="mini-doc quote-doc">
-              <b data-i18n="visualQuote">Contractor Quote</b>
-              <span></span>
-              <span></span>
-              <em><i data-lucide="triangle-alert"></i></em>
-            </article>
-            <article class="mini-doc boq-doc">
-              <b>BOQ</b>
-              <span></span>
-              <span></span>
-              <em><i data-lucide="triangle-alert"></i></em>
-            </article>
-            <article class="mini-doc repair-doc">
-              <b data-i18n="visualRepair">Repair / Maintenance Contract</b>
-              <span></span>
-              <span></span>
-              <em><i data-lucide="triangle-alert"></i></em>
-            </article>
-          </div>
-
-          <div class="villa-sketch" aria-hidden="true">
-            <div class="roof"></div>
-            <div class="villa-body">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-
-          <div class="lens-card" aria-hidden="true">
-            <i data-lucide="search"></i>
-            <span><i data-lucide="flag"></i></span>
-          </div>
-
-          <aside class="whatsapp-card" aria-label="Sample WhatsApp report">
-            <span class="wa-badge" aria-hidden="true"></span>
-            <div class="whatsapp-top">
-              <span>WhiteGrain Report</span>
-            </div>
-            <ul>
-              <li><b>3</b> <span data-i18n="waFlags">Red Flags Found</span></li>
-              <li data-i18n="waCosts">Cost risks</li>
-              <li data-i18n="waMissing">Missing items</li>
-              <li data-i18n="waTerms">Unclear terms</li>
-            </ul>
-          </aside>
-        </div>
-
-        <ol class="step-strip" aria-label="WhiteGrain service steps">
-          <li>
-            <b>1</b>
-            <i data-lucide="upload-cloud"></i>
-            <span data-i18n="flow1">Upload</span>
-          </li>
-          <li>
-            <b>2</b>
-            <i data-lucide="search"></i>
-            <span data-i18n="flow2">Review</span>
-          </li>
-          <li>
-            <b>3</b>
-            <span class="inline-whatsapp-logo step-whatsapp-logo" aria-hidden="true"></span>
-            <span data-i18n="flow3">WhatsApp Report</span>
-          </li>
-        </ol>
-
-        <form class="quick-intake" id="redFlagForm" novalidate>
-          <label class="upload-zone" id="upload">
-            <input
-              type="file"
-              name="document"
-              accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,.jpg,.jpeg,.png,.webp"
-              multiple
-              required
-            />
-            <span class="upload-icon" aria-hidden="true"><i data-lucide="files"></i></span>
-            <span class="upload-copy">
-              <strong data-i18n="uploadTitle">Tap to upload files</strong>
-              <small data-i18n="uploadHint">PDF, images, Word, or Excel. Upload one or many.</small>
-              <b class="file-name" id="fileName" data-i18n="fileEmpty">No files selected</b>
-            </span>
-          </label>
-
-          <div class="scan-status" id="analysisStatus" hidden>
-            <div class="scan-bar"><span></span></div>
-            <p data-i18n="scanStatus">Files selected. Add WhatsApp and get your red flags.</p>
-          </div>
-
-          <p class="form-note" id="formNote" data-i18n="formNote">
-            No signup required. Your report is sent on WhatsApp.
-          </p>
-
-          <div class="contact-fields" id="contactFields">
-            <label class="whatsapp-input">
-              <span class="whatsapp-mark" aria-hidden="true"></span>
-              <span class="country-code">+974</span>
-              <input
-                type="tel"
-                name="whatsapp"
-                autocomplete="tel"
-                inputmode="tel"
-                placeholder="Your WhatsApp number"
-                data-i18n-placeholder="whatsappPlaceholder"
-                required
-              />
-            </label>
-
-            <div class="project-pills" role="radiogroup" aria-label="Project type">
-              <label>
-                <input type="radio" name="projectType" value="villa-construction" required />
-                <i data-lucide="home"></i>
-                <span data-i18n="projectVillaShort">Construction Documents</span>
-              </label>
-              <label>
-                <input type="radio" name="projectType" value="villa-renovation" />
-                <i data-lucide="paint-roller"></i>
-                <span data-i18n="projectRenovationShort">Renovation Documents</span>
-              </label>
-              <label>
-                <input type="radio" name="projectType" value="maintenance-repair" />
-                <i data-lucide="wrench"></i>
-                <span data-i18n="projectMaintenanceShort">Maintenance / Repair Documents</span>
-              </label>
-            </div>
-
-            <label class="name-field">
-              <span data-i18n="nameLabel">Name</span>
-              <input type="text" name="name" autocomplete="name" data-i18n-placeholder="namePlaceholder" placeholder="Optional" />
-            </label>
-
-            <button class="submit-button" type="submit">
-              <span data-i18n="primaryCta">Get 3 Free Red Flags</span>
-              <i data-lucide="arrow-right"></i>
-            </button>
-          </div>
-        </form>
-
-          <div class="trust-row" aria-label="WhiteGrain trust points">
-          <span><i data-lucide="shield-check"></i><b data-i18n="trustNoSignup">No signup required</b></span>
-          <span><span class="inline-whatsapp-logo trust-whatsapp-logo" aria-hidden="true"></span><b data-i18n="trustWhatsapp">Report sent on WhatsApp</b></span>
-        </div>
-
-        <div class="feature-strip" aria-label="WhiteGrain service qualities">
-          <span><i data-lucide="lock-keyhole"></i><b data-i18n="trustPrivateTitle">Private upload</b></span>
-          <span><i data-lucide="circle-check"></i><b data-i18n="easyUnderstand">Easy to understand</b></span>
-          <span><i data-lucide="file-check-2"></i><b data-i18n="builtForDocs">Built for contractor and maintenance documents</b></span>
-        </div>
-      </section>
-
-      <section class="sample-report" aria-labelledby="sampleReportTitle">
-        <div>
-          <p class="eyebrow" data-i18n="sampleEyebrow">Sample output</p>
-          <h2 id="sampleReportTitle" data-i18n="sampleTitle">What your WhatsApp report looks like</h2>
-          <p data-i18n="sampleText">
-            A short, practical red-flag summary: what the document says, why it matters, and what to ask before signing.
-          </p>
-        </div>
-        <div class="sample-card" aria-label="Sample red flag">
-          <span class="sample-label" data-i18n="sampleFlagLabel">Red flag</span>
-          <h3 data-i18n="sampleFlagTitle">AC listed as a lump sum</h3>
-          <p data-i18n="sampleFlagText">
-            Ask for brand, tonnage, duct insulation, testing, commissioning, and warranty before approval.
-          </p>
-        </div>
-      </section>
-
-      <section class="info-grid" id="checks">
-        <article>
-          <i data-lucide="lock-keyhole"></i>
-          <h2 data-i18n="trustPrivateTitle">Private upload</h2>
-          <p data-i18n="trust1">Your documents are used only to prepare your review.</p>
-        </article>
-        <article>
-          <i data-lucide="list-checks"></i>
-          <h2 data-i18n="reviewTitle">Built for contractor and maintenance documents</h2>
-          <p data-i18n="reviewText">
-            WhiteGrain looks for scope gaps, vague specs, missing items, payment risks, compliance questions, and cost red flags.
-          </p>
-        </article>
-        <article>
-          <i data-lucide="message-square-text"></i>
-          <h2 data-i18n="reportTitle">Easy to understand</h2>
-          <p data-i18n="reportText">You receive red flags, what they mean, and what to ask before signing or paying.</p>
-        </article>
-      </section>
-
-      <section class="example-section" id="examples">
-        <p class="eyebrow" data-i18n="flagsEyebrow">Examples</p>
-        <h2 data-i18n="flagsTitle">Common red flags WhiteGrain can catch</h2>
-        <div class="example-list">
-          <article>
-            <b data-i18n="flagTilesTitle">Tiles included</b>
-            <p data-i18n="flagTiles">No brand, size, origin, allowance, or credit rule if you choose cheaper tiles.</p>
-          </article>
-          <article>
-            <b data-i18n="flagAcTitle">AC lump sum</b>
-            <p data-i18n="flagAc">No brand, tonnage, duct insulation, testing, commissioning, or warranty detail.</p>
-          </article>
-          <article>
-            <b data-i18n="flagPaymentTitle">Payment stage</b>
-            <p data-i18n="flagPayment">Payment is requested before clear measurable work is completed or approved.</p>
-          </article>
-        </div>
-      </section>
+      <h1>Website offline</h1>
+      <p>
+        WhiteGrain is not accepting uploads or public requests right now.
+      </p>
+      <span class="status">Temporarily unavailable</span>
     </main>
-
-    <footer class="site-footer">
-      <span>WhiteGrain</span>
-      <a href="/admin" data-i18n="admin">Admin</a>
-    </footer>
-
-    <script src="whitegrain-version.js?v=20260630-large-upload-fix"></script>
   </body>
 </html>
